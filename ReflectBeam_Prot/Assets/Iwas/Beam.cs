@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class _BeamLaunchPad : MonoBehaviour
+public class Beam : MonoBehaviour
 {
+    [SerializeField]
+    BeamRaycast beamRaycast;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +16,6 @@ public class _BeamLaunchPad : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        beamRaycast.Ray(transform.forward);
     }
 }
