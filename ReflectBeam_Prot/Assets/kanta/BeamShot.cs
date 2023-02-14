@@ -21,5 +21,17 @@ public class BeamShot : MonoBehaviour
         Physics.Raycast(origin,direction*raylength, out hit );
         Debug.Log(Physics.Raycast(origin, direction * raylength, out hit));
         Debug.DrawRay(origin, direction * raylength, Color.red);
+
+        RayHit();
+
+
     }   
+    void RayHit()
+    {    
+        //ÉvÉåÉCÉÑÅ[Ç…ìñÇΩÇ¡ÇΩéû
+        if (hit.collider.gameObject.TryGetComponent<PlayerMove>(out PlayerMove playerMove))
+        {
+            playerMove.PlayerDeath();
+        }
+    }
 }
