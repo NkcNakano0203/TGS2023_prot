@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class BeamShot : MonoBehaviour
 {
-    [SerializeField]float raylength = 10;
-  
-    // Update is called once per frame
-  
-    public void RayShot()
-    {
-        Vector3 origin = transform.position; // 原点
-        Vector3 direction = Vector3.right*raylength;   //向いている方向
+    float raylength = float.MaxValue;    
 
-        Ray ray = new Ray(origin, direction); // Rayを生成;
+    Ray ray;
+    RaycastHit hit;   
 
-        Physics.Raycast(ray, raylength);
-        Debug.DrawRay(origin, direction, Color.red);
+    //レイを返す
+    public Ray GetRay() { return ray; }
+    //当たった座標を変換
+    public RaycastHit GetHit() { return hit; }
 
-    }
+
+    //レイを飛ばす処理
+    public void RayShot(Vector3 origin, Vector3 direction)
+    {       
+        Physics.Raycast(origin,direction*raylength, out hit );
+        Debug.Log(Physics.Raycast(origin, direction * raylength, out hit));
+        Debug.DrawRay(origin, direction * raylength, Color.red);
+    }   
 }
