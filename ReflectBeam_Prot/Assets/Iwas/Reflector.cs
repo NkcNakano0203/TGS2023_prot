@@ -1,20 +1,35 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Reflector : MonoBehaviour,IGimmick
+public class Reflector : MonoBehaviour, ISelectable, IRotatable, IRayRecevier
 {
-    public MeshFilter mf;
+    [SerializeField]
+    Vector3 inNormal;
 
-    // ギミックのUIサイズ
-    GimmickUISize IGimmick.GetSize()
+    [SerializeField]
+    BeamRaycast beamRaycast;
+
+    public GameObject obj;
+
+    public LastHit Hit(Vector3 rayvec)
     {
-        return new GimmickUISize(new Vector2(0, 0), new Vector2(3, 3), Vector2.one);
+        // ベクトルを反射させる
+        Vector3 reflectVec = Vector3.Reflect(rayvec, inNormal);
+
+        // レイを再度飛ばす
+        beamRaycast.Ray(reflectVec);
+        LastHit s = new LastHit();
+        return s;
     }
-    // 当たったとき
-    public Vector3 OnHit()
+
+    public SelectAreaInfo GetScale()
     {
-       return Vector3.forward;
+        throw new System.NotImplementedException();
+    }
+
+    public void Rotate()
+    {
+        throw new System.NotImplementedException();
     }
 }
