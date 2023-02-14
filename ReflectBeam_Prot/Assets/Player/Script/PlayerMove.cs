@@ -23,8 +23,10 @@ public class PlayerMove : MonoBehaviour
     public LayerMask groundLayers;//地面だと認識するレイヤー
     bool ishit;
 
-    public IReadOnlyReactiveProperty<bool> deathProp => death;
+    public IReadOnlyReactiveProperty<bool> DeathProp => death;
     private ReactiveProperty<bool> death = new ReactiveProperty<bool>(false);
+    public IReadOnlyReactiveProperty<bool> GetStar => star;
+    private ReactiveProperty<bool> star = new ReactiveProperty<bool>(false);
 
 
     void Start()
@@ -97,7 +99,12 @@ public class PlayerMove : MonoBehaviour
         rb.AddForce(localGravity, ForceMode.Acceleration);
 
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.TryGetComponent<Star>(out _)) return;
+        other.gameObject.SetActive(false);
+        star.Value = true;
+    }
 
     public void PlayerDeath()
     {
