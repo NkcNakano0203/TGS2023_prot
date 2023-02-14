@@ -5,12 +5,12 @@ using UnityEngine;
 public class BeamRaycast : MonoBehaviour
 {
 
-    public void Ray(Vector3 rayvec)
+    public void Ray(Vector3 rayvec,Vector3 rayPos)
     {
         // レイを飛ばす
-        bool rayHit = Physics.Raycast(transform.position, rayvec, out RaycastHit hit);
+        bool rayHit = Physics.Raycast(rayPos, rayvec, out RaycastHit hit);
         // レイを描画
-        Debug.DrawRay(transform.position, rayvec, Color.red);
+        Debug.DrawRay(rayPos, rayvec, Color.red);
 
         // レイが当たっていないときはリターン
         if (!rayHit)
@@ -19,8 +19,9 @@ public class BeamRaycast : MonoBehaviour
         // レイが当たったゲームオブジェクトがIRayRecevierを持っていたら
         if (!hit.collider.gameObject.TryGetComponent(out IRayRecevier rayRecevier))
             return;
+        Debug.Log(hit.point);
 
-        rayRecevier.Hit(rayvec);
+        rayRecevier.Hit(rayvec,hit.point);
 
     }
 }

@@ -5,5 +5,5 @@ using UnityEngine;
 
 interface IRayRecevier
 {
-    LastHit Hit(Vector3 rayvec);
+    LastHit Hit(Vector3 rayVec,Vector3 rayPos);
 }

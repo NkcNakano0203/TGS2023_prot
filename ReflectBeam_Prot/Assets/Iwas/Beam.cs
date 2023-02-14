@@ -10,12 +10,12 @@ public class Beam : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        beamRaycast = GetComponent<BeamRaycast>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        beamRaycast.Ray(transform.forward);
+        beamRaycast.Ray(transform.forward,transform.position);
     }
 }

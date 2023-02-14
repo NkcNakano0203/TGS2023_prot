@@ -4,6 +4,7 @@ using UnityEngine;
 
 interface IRotatable
 {
-    void Rotate();
+    void RightRotate();
+    void LeftRotate();
    
 }
