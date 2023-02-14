@@ -7,10 +7,19 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class RemoteControl : MonoBehaviour
 {
-    // リフレクター用配列
-    private GameObject[] Reflector;
-
     private PlayerInput playerInput;
+
+    private TestManager testManager;
+
+    // オブジェクトの順番
+    private int objectNumber;
+    // 最大順番数
+    private int maxObjectNumber;
+
+    [SerializeField]
+    private Material red;
+    [SerializeField]
+    private Material white;
 
     private void Start()
     {
@@ -30,6 +39,20 @@ public class RemoteControl : MonoBehaviour
     {
         Debug.Log("R1ボタン" + context.ReadValueAsButton());
         bool isButtonDown = context.ReadValueAsButton();
+
+        testManager.refrecters[objectNumber].GetComponent<MeshRenderer>().material = white;
+
+        if (maxObjectNumber - 1 > objectNumber)
+        {
+            objectNumber++;
+        }
+        else
+        {
+            objectNumber = 0;
+        }
+
+        Debug.Log("最大数" + maxObjectNumber + " " + "現在の数" + objectNumber);
+        testManager.refrecters[objectNumber].GetComponent<MeshRenderer>().material = red;
     }
 
     /// <summary>
@@ -39,6 +62,20 @@ public class RemoteControl : MonoBehaviour
     {
         Debug.Log("L1ボタン" + context.ReadValueAsButton());
         bool isButtonDown = context.ReadValueAsButton();
+
+        testManager.refrecters[objectNumber].GetComponent<MeshRenderer>().material = white;
+
+        if (objectNumber == 0)
+        {
+            objectNumber += maxObjectNumber - 1;
+        }
+        else
+        {
+            objectNumber--;
+        }
+
+        Debug.Log("最大数" + maxObjectNumber + " " + "現在の数" + objectNumber);
+        testManager.refrecters[objectNumber].GetComponent<MeshRenderer>().material = red;
     }
 
     /// <summary>
@@ -57,5 +94,34 @@ public class RemoteControl : MonoBehaviour
     {
         Debug.Log("L2ボタン" + context.ReadValueAsButton());
         bool isButtonDown = context.ReadValueAsButton();
+    }
+
+    public void CheckObjectName()
+    {
+        GameObject t = GameObject.FindWithTag("TestManager");
+
+        if (t == null)
+        {
+            Debug.Log("オブジェクトがないよ");
+            return;
+        }
+
+        testManager = t.GetComponent<TestManager>();
+
+        if (testManager == null)
+        {
+            Debug.Log("スクリプトがないよ");
+            return;
+        }
+
+        for (int i = 0; i < testManager.refrecters.Length; ++i)
+        {
+            Debug.Log(testManager.refrecters[i].name);
+        }
+
+        // objectNumber初期化
+        objectNumber = 0;
+        // 最大順番数を代入
+        maxObjectNumber = testManager.refrecters.Length;
     }
 }
