@@ -45,14 +45,17 @@ public class PlayerMove : MonoBehaviour
 
         // プレイヤー移動
         rb.velocity = new Vector3(player_velocity.x * speed, 0, 0);
+
+        // groundLayersに当たっていたらtrueに
         ishit = Physics.CheckBox(transform.position,Vector3.one * 0.5f,Quaternion.identity,groundLayers);
+
         if (ishit)
             isJump = false;
         else
             isJump = true;
 
 
-        // 重力をかけるメソッドを呼ぶ
+        // 重力を加えるメソッドを呼ぶ
         if (isJump)
                 SetLocalGravity();
         
@@ -61,7 +64,6 @@ public class PlayerMove : MonoBehaviour
     // 移動
     public void OnMove(InputAction.CallbackContext context)
     {
-        Debug.Log("Move入力されたよ！");
 
         // Move以外は処理しない
         if (context.action.name != "Move")
@@ -78,12 +80,12 @@ public class PlayerMove : MonoBehaviour
     // ジャンプ
     public void OnJump(InputAction.CallbackContext context)
     {
-        Debug.Log("Jump入力されたよ！");
 
         isJump = true;
 
         if (context.action.name != "Jump")
             return;
+
         // ジャンプ実行
         if(ishit)
             this.transform.DOMoveY(5f, 1f).SetEase(ease).SetRelative(true);
@@ -91,8 +93,11 @@ public class PlayerMove : MonoBehaviour
 
     public void SetLocalGravity()
     {
+        //　重力を加える
         rb.AddForce(localGravity, ForceMode.Acceleration);
+
     }
+
 
     public void PlayerDeath()
     {
