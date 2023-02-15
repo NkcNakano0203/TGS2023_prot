@@ -27,6 +27,8 @@ public class PlayerMove : MonoBehaviour
     private ReactiveProperty<bool> death = new ReactiveProperty<bool>(false);
     public IReadOnlyReactiveProperty<bool> GetStar => star;
     private ReactiveProperty<bool> star = new ReactiveProperty<bool>(false);
+    public IReadOnlyReactiveProperty<bool> GetGoal => goal;
+    private ReactiveProperty<bool> goal = new ReactiveProperty<bool>(false);
 
 
     void Start()
@@ -101,10 +103,18 @@ public class PlayerMove : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.TryGetComponent<Star>(out _)) return;
-        other.gameObject.SetActive(false);
-        star.Value = true;
+        if (other.TryGetComponent<Star>(out _))
+        {
+            other.gameObject.SetActive(false);
+            star.Value = true;
+        }
+        else if(other.TryGetComponent<Goal>(out _))
+        {
+            goal.Value = true;
+        }
+       
     }
+
 
     public void PlayerDeath()
     {
