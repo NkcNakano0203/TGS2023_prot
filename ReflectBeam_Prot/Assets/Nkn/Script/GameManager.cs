@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        player.DeathProp.Where(x => x).Subscribe(x => clear.Value = 1);
+        player.DeathProp.Where(x => x).Subscribe(x => clear.Value = true);
         player.GetStar.Where(x => x).Subscribe(x => star++);
     }
 
