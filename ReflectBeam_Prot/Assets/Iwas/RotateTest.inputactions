@@ -1,0 +1,54 @@
+{
+    "name": "RotateTest",
+    "maps": [
+        {
+            "name": "Rotate",
+            "id": "58725f43-2ed2-4710-93e0-553bfa8861dc",
+            "actions": [
+                {
+                    "name": "LeftRotate",
+                    "type": "Button",
+                    "id": "5f1fbefc-61a2-4cc7-abda-07d1d3554ed0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RIghtRotate",
+                    "type": "Button",
+                    "id": "fc9737a7-5e07-49be-89bb-56bd01059ed5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f0c7db3f-3ae0-4a9f-802b-bbed7d9e181e",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftRotate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b4f27dd1-b505-4c75-9f79-9cbdbc170ca2",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RIghtRotate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
