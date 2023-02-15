@@ -43,8 +43,15 @@ public class RemoteControl : MonoBehaviour
         playerInput.actions["RemoteControl_R_Trigger"].started += On_R_TriggerButton;
         playerInput.actions["RemoteControl_L_Trigger"].started += On_L_TriggerButton;
 
+        // リフレクター配列の中身が空の時リターン
+        if (refrecters.Length <= 0)
+        {
+            return;
+        }
+
         // objectNumber初期化
         objectNumber = 0;
+        
         // 最大順番数を代入
         maxObjectNumber = refrecters.Length;
         refrecters[objectNumber].GetComponent<MeshRenderer>().material = red;
