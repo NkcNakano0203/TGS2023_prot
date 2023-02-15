@@ -1,7 +1,9 @@
 // 作成日:02/15 作成者:市瀬
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 
 /// <summary>
 /// アナログスティックの傾き角度を取得するスクリプト
@@ -15,7 +17,7 @@ public class AnalogStickDegree : MonoBehaviour
 
     // 今選択中のギミック
     [SerializeField]
-    private GameObject nowSelectGimick;
+    private GameObject currentSelectGimick;
 
     // 角度を保存するリスト
     [SerializeField]
@@ -38,70 +40,88 @@ public class AnalogStickDegree : MonoBehaviour
     [SerializeField]
     private Material white;
 
+    Vector2 value;
+
+    private bool isSelect = true;
+
     private void Start()
     {
         playerInput = GetComponent<PlayerInput>();
-        playerInput.actions["Stick"].performed += StickDegree;
+        playerInput.onActionTriggered += StickDegree;
         // 今選択中のギミックの初期化
-        nowSelectGimick = gimicks[0];
-        nowSelectGimick.GetComponent<MeshRenderer>().material = red;
+        currentSelectGimick = gimicks[0];
+        currentSelectGimick.GetComponent<MeshRenderer>().material = red;
     }
 
     private void Update()
     {
-
+        Debug.Log(isSelect);
     }
 
     private void StickDegree(InputAction.CallbackContext context)
     {
-        Vector2 value = context.ReadValue<Vector2>();
+        if (!isSelect) { return; }
+        isSelect = false;
 
-        float degree = Mathf.Atan2(value.x, value.y) * Mathf.Rad2Deg;
-        if (degree < 0)
-        {
-            degree += 360;
-        }
+        value = context.ReadValue<Vector2>();
+        //Debug.Log(value);
+
+        //float degree = Mathf.Atan2(value.x, value.y) * Mathf.Rad2Deg;
+        //if (degree < 0)
+        //{
+        //    degree += 360;
+        //}
 
         //Debug.Log(degree);
-        SortSelect();
+        if (value != Vector2.zero)
+        {
+            SortSelect();
+        }
+        else
+        {
+            isSelect = true;
+        }
     }
 
     // ソートするメソッド
-    private void SortSelect()
+    private async void SortSelect()
     {
-        nowSelectGimick.GetComponent<MeshRenderer>().material = white;
+
+        currentSelectGimick.GetComponent<MeshRenderer>().material = white;
+
         // リストの初期化
         angles = new List<float>();
         objects = new List<GameObject>();
 
         foreach (GameObject t in gimicks)
         {
-            if (nowSelectGimick.name != t.name)
+            if (currentSelectGimick.name != t.name)
             {
                 objects.Add(t.gameObject);
-                Vector3 targetDir = t.transform.position - nowSelectGimick.transform.position;
+                //Vector3 targetDir =  t.transform.position;
                 // なす角を計算してリストに保存
-                angles.Add(Vector3.SqrMagnitude(Vector3.ProjectOnPlane(targetDir, Vector3.forward)));
-                Debug.Log(Vector3.SqrMagnitude(Vector3.ProjectOnPlane(targetDir, Vector3.forward)));
+                //angles.Add(Vector3.SqrMagnitude(Vector3.ProjectOnPlane(targetDir, Vector3.forward)));
+                //angles.Add(Vector2.Angle(t.transform.position, value));
+                angles.Add(Mathf.Abs( Vector2.SignedAngle(value, t.transform.position - currentSelectGimick.transform.position)));
+
+                //Debug.Log(Vector3.SqrMagnitude(Vector3.ProjectOnPlane(targetDir, Vector3.forward)));
             }
         }
 
+        minAngle = 10000000f;
         for (int i = 0; i < angles.Count; ++i)
         {
-            if(i == 0)
-            {
-                minAngle = angles[i];
-                temporaryGimick = gimicks[i];
-            }
-
             if (minAngle > angles[i] && angles[i] != 0)
             {
                 minAngle = angles[i];
-                temporaryGimick = gimicks[i];
+                temporaryGimick = objects[i];
             }
         }
 
-        nowSelectGimick = temporaryGimick;
-        nowSelectGimick.GetComponent<MeshRenderer>().material = red;
+        currentSelectGimick = temporaryGimick;
+        currentSelectGimick.GetComponent<MeshRenderer>().material = red;
+
+        await UniTask.Delay(TimeSpan.FromSeconds(0.2f));
+        isSelect = true;
     }
 }
