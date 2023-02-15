@@ -5,21 +5,38 @@ using UnityEngine;
 public class Reflector : MonoBehaviour, ISelectable, IRayRecevier
 {
     [SerializeField]
-    Vector3 inNormal;
-
-    [SerializeField]
     BeamRaycast beamRaycast;
 
     public GameObject obj;
 
-    public LastHit Hit(Vector3 rayVec,Vector3 rayPos)
+    public LastHit Hit(Vector3 rayVec, Vector3 rayPos)
     {
+        LastHit s = new LastHit();
+
+        Vector3 nor_RayVec = rayVec.normalized;
+        Vector3 nor_inNor = transform.up;
+
+        Vector3 inNormal = transform.up;
+
+        float dot = Vector3.Dot(nor_RayVec, nor_inNor);
+
+        if ((dot >= 0 && dot <= 0.1f) || (dot <= 0 && dot >= -0.1f))
+        {
+            Debug.Log("waaaaaaaaaaaaa");
+            return s;
+        }
+
+        Vector3 normal = (dot < 0) ? -inNormal : inNormal;
+        // Debug.Log(normal);
+        Debug.DrawRay(transform.position, normal, Color.blue);
+
+
         // ベクトルを反射させる
-        Vector3 reflectVec = Vector3.Reflect(rayVec, inNormal);
+        Vector3 reflectVec = Vector3.Reflect(rayVec, normal);
 
         // レイを再度飛ばす
-        beamRaycast.Ray(reflectVec,rayPos);
-        LastHit s = new LastHit();
+        beamRaycast.Ray(reflectVec, rayPos);
+
         return s;
     }
 

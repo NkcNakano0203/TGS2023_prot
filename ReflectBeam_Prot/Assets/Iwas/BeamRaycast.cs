@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BeamRaycast : MonoBehaviour
 {
-
     public void Ray(Vector3 rayvec,Vector3 rayPos)
     {
         // レイを飛ばす
@@ -19,9 +18,8 @@ public class BeamRaycast : MonoBehaviour
         // レイが当たったゲームオブジェクトがIRayRecevierを持っていたら
         if (!hit.collider.gameObject.TryGetComponent(out IRayRecevier rayRecevier))
             return;
-        Debug.Log(hit.point);
+        //Debug.Log(hit.point);
 
         rayRecevier.Hit(rayvec,hit.point);
-
     }
 }
