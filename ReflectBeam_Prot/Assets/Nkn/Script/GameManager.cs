@@ -12,40 +12,42 @@ public class GameManager : MonoBehaviour
     // 開始通知
     public IReadOnlyReactiveProperty<bool> StartProp => start;
     private ReactiveProperty<bool> start = new ReactiveProperty<bool>(false);
-    // 終了通知
-    // 1でゲームオーバー:2でゲームクリア
-    public IReadOnlyReactiveProperty<int> EndProp => end;
-    private ReactiveProperty<int> end = new ReactiveProperty<int>(0);
 
-    //TODO:UIに向けて時間、星、リスタート数を公開する
+    // 1でミス:2でリスタート
+    public IReadOnlyReactiveProperty<int> RestartProp => restart;
+    private ReactiveProperty<int> restart = new ReactiveProperty<int>(0);
+
+    // 終了通知
+    public IReadOnlyReactiveProperty<bool> ClearProp => clear;
+    private ReactiveProperty<bool> clear = new ReactiveProperty<bool>(false);
 
     /// <summary>
-    /// フェードアウトを待ってスタートしたい
+    /// フェードアウトの時間
     /// </summary>
     [SerializeField]
     float holdTime = 0.1f;
 
     /// <summary>
-    /// フェードアウトが終わってからの時間
+    /// ゲーム内時間(フェードアウトが終わってから測り始めたい)
     /// </summary>
     public float gameTime => timer;
     private float timer = 0;
 
     /// <summary>
-    /// 星の数
+    /// 星獲得数
     /// </summary>
     public int starCount => star;
     private int star = 0;
 
     /// <summary>
-    /// リスタート数
+    /// リスタート数(死亡、リスタート問わず)
     /// </summary>
-    public int restartCount => restart;
-    private int restart = 0;
+    public int restartCount => restartCnt;
+    private int restartCnt = 0;
 
     private void Start()
     {
-        player.DeathProp.Where(x => x).Subscribe(x => end.Value = 1);
+        player.DeathProp.Where(x => x).Subscribe(x => clear.Value = 1);
         player.GetStar.Where(x => x).Subscribe(x => star++);
     }
 
