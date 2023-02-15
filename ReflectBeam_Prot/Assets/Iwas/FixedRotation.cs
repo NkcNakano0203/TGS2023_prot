@@ -49,7 +49,7 @@ public class FixedRotation : MonoBehaviour, IRotatable
             return;
 
         // THETA•ª‰ñ“]‚·‚é
-        transform.DOLocalRotate(new Vector3(0, 0, theta), rotateTime)
+        transform.DOLocalRotate(new Vector3(0, 0, -theta), rotateTime)
             .SetRelative(true)
             .OnComplete(() => isRotate = false);
 
@@ -64,7 +64,7 @@ public class FixedRotation : MonoBehaviour, IRotatable
             return;
 
         // rotateTime‚©‚¯‚ÄTHETA•ª‰ñ“]‚·‚é
-        transform.DOLocalRotate(new Vector3(0, 0, -theta), rotateTime)
+        transform.DOLocalRotate(new Vector3(0, 0, theta), rotateTime)
             .SetRelative(true)
             .OnComplete(() => isRotate = false);
 

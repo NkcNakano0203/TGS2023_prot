@@ -23,6 +23,13 @@ public class RemoteControl : MonoBehaviour
     [SerializeField]
     private Material white;
 
+    InputAction leftAction;
+    InputAction rightAction;
+    bool is_R_Trigger_Pressed;
+    bool is_L_Trigger_Pressed;
+    FreeRotation freeRotation;
+    FixedRotation fixedRotation;
+
     private void Start()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -30,13 +37,34 @@ public class RemoteControl : MonoBehaviour
         // デリゲート登録
         playerInput.actions["RemoteControl_R_Shoulder"].performed += On_R_ShoulderButton;
         playerInput.actions["RemoteControl_L_Shoulder"].performed += On_L_ShoulderButton;
-        playerInput.actions["RemoteControl_R_Trigger"].performed += On_R_TriggerButton;
-        playerInput.actions["RemoteControl_L_Trigger"].performed += On_L_TriggerButton;
+        playerInput.actions["RemoteControl_R_Trigger"].started += On_R_TriggerButton;
+        playerInput.actions["RemoteControl_L_Trigger"].started += On_L_TriggerButton;
 
         // objectNumber初期化
         objectNumber = 0;
         // 最大順番数を代入
         maxObjectNumber = refrecters.Length;
+        refrecters[objectNumber].GetComponent<MeshRenderer>().material = red;
+
+        rightAction = playerInput.actions["RemoteControl_R_Trigger"];
+        leftAction = playerInput.actions["RemoteControl_L_Trigger"];
+    }
+
+    private void Update()
+    {
+        is_R_Trigger_Pressed = rightAction.IsPressed();
+        is_L_Trigger_Pressed = leftAction.IsPressed();
+        Debug.Log(is_R_Trigger_Pressed + " " + is_L_Trigger_Pressed);
+
+        if (is_R_Trigger_Pressed || is_L_Trigger_Pressed)
+        {
+            freeRotation = refrecters[objectNumber].GetComponent<FreeRotation>();
+            if (freeRotation)
+            {
+                refrecters[objectNumber].GetComponent<FreeRotation>().RightRotate(is_L_Trigger_Pressed, is_R_Trigger_Pressed); ;
+                refrecters[objectNumber].GetComponent<FreeRotation>().LeftRotate(is_L_Trigger_Pressed, is_R_Trigger_Pressed); ;
+            }
+        }
     }
 
     /// <summary>
@@ -91,7 +119,11 @@ public class RemoteControl : MonoBehaviour
     private void On_R_TriggerButton(InputAction.CallbackContext context)
     {
         Debug.Log("R2ボタン" + context.ReadValueAsButton());
-        bool isButtonDown = context.ReadValueAsButton();
+        fixedRotation = refrecters[objectNumber].GetComponent<FixedRotation>();
+        if (fixedRotation)
+        {
+            fixedRotation.RightRotate(true, true);
+        }
     }
 
     /// <summary>
@@ -100,6 +132,10 @@ public class RemoteControl : MonoBehaviour
     private void On_L_TriggerButton(InputAction.CallbackContext context)
     {
         Debug.Log("L2ボタン" + context.ReadValueAsButton());
-        bool isButtonDown = context.ReadValueAsButton();
+        fixedRotation = refrecters[objectNumber].GetComponent<FixedRotation>();
+        if (fixedRotation)
+        {
+            fixedRotation.LeftRotate(true, true);
+        }
     }
 }

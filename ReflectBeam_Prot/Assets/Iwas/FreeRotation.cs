@@ -45,13 +45,13 @@ public class FreeRotation : MonoBehaviour, IRotatable
     {
         // ‰ñ“]
         if (isLeftRotate)
-            transform.Rotate(0, 0, -theta);
+            transform.Rotate(0, 0, theta);
     }
 
     public void RightRotate(bool isLeftRotate, bool isRightRotate)
     {
         // ‰ñ“]
         if (isRightRotate)
-            transform.Rotate(0, 0, theta);
+            transform.Rotate(0, 0, -theta);
     }
 }

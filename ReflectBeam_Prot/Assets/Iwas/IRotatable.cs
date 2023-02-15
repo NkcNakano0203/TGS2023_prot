@@ -7,5 +7,4 @@ interface IRotatable
 {
     void RightRotate(bool isLeftRotate, bool isRightRotate);
     void  LeftRotate(bool isLeftRotate, bool isRightRotate);
-   
 }
