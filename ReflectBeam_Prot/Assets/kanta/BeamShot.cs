@@ -24,17 +24,25 @@ public class BeamShot :MonoBehaviour
         Physics.Raycast(origin,direction, out hit );
        
         //Rayが当たった時の処理        
-        RayHit(hit);
+        RayHit(hit,direction);
 
     }   
 
-    void RayHit(RaycastHit hit)
+    void RayHit(RaycastHit hit,Vector3 direction)
     {
+        //当たってないときリターン
         if (hit.collider == null) { return; }
+
         //プレイヤーに当たった時
         if (hit.collider.gameObject.TryGetComponent(out PlayerMove playerMove))
         {
             playerMove.PlayerDeath();              
+        }
+
+        //反射物に当たった時
+        if(hit.collider.gameObject.TryGetComponent(out IRayRecevier irayRecevier))
+        {
+            irayRecevier.Hit(direction, hit.point);
         }
     }
 }
