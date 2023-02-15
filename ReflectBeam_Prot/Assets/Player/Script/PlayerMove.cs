@@ -4,13 +4,14 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using DG.Tweening;
 using UniRx;
+using Pause;
 
 public class PlayerMove : MonoBehaviour
 {
     
     // playerスピード
     private Vector3 player_velocity;
-    float speed = 3f; 
+    float speed = 6f; 
 
     bool isJump = false;
 
@@ -31,8 +32,12 @@ public class PlayerMove : MonoBehaviour
     private ReactiveProperty<bool> goal = new ReactiveProperty<bool>(false);
 
 
+    bool pause;
+
     void Start()
     {
+        PauseManager.pause.Subscribe(x => pause = x);
+
         rb = this.GetComponent<Rigidbody>();
       
 
@@ -46,6 +51,7 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
+        if (pause) return;
 
         // プレイヤー移動
         rb.velocity = new Vector3(player_velocity.x * speed, 0, 0);
