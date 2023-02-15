@@ -60,6 +60,12 @@ public class RemoteControl : MonoBehaviour
             return;
         }
 
+        // リフレクター配列の中身が空の時リターン
+        if(refrecters.Length <= 0)
+        {
+            return;
+        }
+
         is_R_Trigger_Pressed = rightAction.IsPressed();
         is_L_Trigger_Pressed = leftAction.IsPressed();
         Debug.Log(is_R_Trigger_Pressed + " " + is_L_Trigger_Pressed);
@@ -81,6 +87,12 @@ public class RemoteControl : MonoBehaviour
     private void On_R_ShoulderButton(InputAction.CallbackContext context)
     {
         if(isPause == true)
+        {
+            return;
+        }
+
+        // リフレクター配列の中身が空の時リターン
+        if (refrecters.Length <= 0)
         {
             return;
         }
@@ -113,6 +125,12 @@ public class RemoteControl : MonoBehaviour
             return;
         }
 
+        // リフレクター配列の中身が空の時リターン
+        if (refrecters.Length <= 0)
+        {
+            return;
+        }
+
         Debug.Log("L1ボタン" + context.ReadValueAsButton());
         bool isButtonDown = context.ReadValueAsButton();
 
@@ -141,6 +159,12 @@ public class RemoteControl : MonoBehaviour
             return;
         }
 
+        // リフレクター配列の中身が空の時リターン
+        if (refrecters.Length <= 0)
+        {
+            return;
+        }
+
         Debug.Log("R2ボタン" + context.ReadValueAsButton());
         fixedRotation = refrecters[objectNumber].GetComponent<FixedRotation>();
         if (fixedRotation)
@@ -155,6 +179,12 @@ public class RemoteControl : MonoBehaviour
     private void On_L_TriggerButton(InputAction.CallbackContext context)
     {
         if (isPause == true)
+        {
+            return;
+        }
+
+        // リフレクター配列の中身が空の時リターン
+        if (refrecters.Length <= 0)
         {
             return;
         }
