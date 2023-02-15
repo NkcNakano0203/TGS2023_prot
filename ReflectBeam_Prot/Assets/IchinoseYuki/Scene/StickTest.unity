@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd1e7a1e7c9e80146ae4def96328a46b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gimicks:
+  gimmicks:
   - {fileID: 1547168146}
   - {fileID: 1854308260}
   - {fileID: 1900710047}
@@ -276,10 +276,7 @@ MonoBehaviour:
   - {fileID: 1021300371}
   - {fileID: 353758149}
   - {fileID: 1782361071}
-  currentSelectGimick: {fileID: 0}
-  angles: []
-  objects: []
-  minAngle: 0
+  currentSelectGimmick: {fileID: 0}
   red: {fileID: 2100000, guid: d970e615eb758b746bb54d6f5fbbca1a, type: 2}
   white: {fileID: 2100000, guid: 0c1569d651571504080f44ce2443ab4f, type: 2}
 --- !u!4 &334070957
