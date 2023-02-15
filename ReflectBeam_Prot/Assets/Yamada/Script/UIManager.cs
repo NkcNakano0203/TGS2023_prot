@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        gm.GoalProp.Where(x => x).Subscribe(x => OnClear());
+        gm.EndProp.Where(x => x == 1).Subscribe(x => OnClear());
     }
 
     void Update()
