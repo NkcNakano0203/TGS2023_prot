@@ -19,7 +19,7 @@ public class BeamDrow : MonoBehaviour
         if (beamShot.GetHit().point!=Vector3.zero)
         {
             lineRenderer.SetWidth(0.3f, 0.3f);
-            lineRenderer.SetPosition(0, transform.position);
+            lineRenderer.SetPosition(0, beamShot.transform.position);
             lineRenderer.SetPosition(1, beamShot.GetHit().point);
         }
     }

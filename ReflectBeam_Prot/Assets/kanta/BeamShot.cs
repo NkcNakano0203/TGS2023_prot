@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BeamShot : MonoBehaviour
+public class BeamShot :MonoBehaviour
 {
-    float raylength = float.MaxValue;    
-
+   
     Ray ray;
     RaycastHit hit;   
 
@@ -15,23 +14,27 @@ public class BeamShot : MonoBehaviour
     public RaycastHit GetHit() { return hit; }
 
 
-    //レイを飛ばす処理
+    //レイを飛ばす処理(これを打ち出す処理が呼び出す)
     public void RayShot(Vector3 origin, Vector3 direction)
-    {       
-        Physics.Raycast(origin,direction*raylength, out hit );
-        Debug.Log(Physics.Raycast(origin, direction * raylength, out hit));
-        Debug.DrawRay(origin, direction * raylength, Color.red);
+    {
+        //raylengthをかけた時オーバーフローさせないため
+        direction = direction.normalized;
 
-        RayHit();
 
+        Physics.Raycast(origin,direction, out hit );
+       
+        //Rayが当たった時の処理        
+        RayHit(hit);
 
     }   
-    void RayHit()
-    {    
+
+    void RayHit(RaycastHit hit)
+    {
+        if (hit.collider == null) { return; }
         //プレイヤーに当たった時
-        if (hit.collider.gameObject.TryGetComponent<PlayerMove>(out PlayerMove playerMove))
+        if (hit.collider.gameObject.TryGetComponent(out PlayerMove playerMove))
         {
-            playerMove.PlayerDeath();
+            playerMove.PlayerDeath();              
         }
     }
 }
