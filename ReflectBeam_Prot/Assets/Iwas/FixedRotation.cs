@@ -6,9 +6,6 @@ using DG.Tweening;
 
 public class FixedRotation : MonoBehaviour, IRotatable
 {
-    [SerializeField]
-    PlayerInput playerInput;
-
     // 回転中かの変数
     bool isRotate = false;
 
@@ -19,28 +16,7 @@ public class FixedRotation : MonoBehaviour, IRotatable
     [SerializeField]
     float rotateTime;
 
-    private void Start()
-    {
-        playerInput.actions["LeftRotate"].started += OnLeftRotated;
-        playerInput.actions["RightRotate"].started += OnRightRotated;
-    }
-    /// <summary>
-    /// 入力判定は後で消す
-    /// </summary>
-
-    // 入力(左回転)
-    public void OnLeftRotated(InputAction.CallbackContext context)
-    {
-        LeftRotate(true, true);
-    }
-
-    // 入力(右回転)
-    public void OnRightRotated(InputAction.CallbackContext context)
-    {
-        RightRotate(true, true);
-    }
-
-
+  
     // 右回転（インターフェース）
     public void RightRotate(bool isLeftRotate, bool isRightRotate)
     {
