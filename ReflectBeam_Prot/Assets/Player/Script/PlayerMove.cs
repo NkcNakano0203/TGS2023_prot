@@ -57,7 +57,7 @@ public class PlayerMove : MonoBehaviour
         rb.velocity = new Vector3(player_velocity.x * speed, 0, 0);
 
         // groundLayersÇ…ìñÇΩÇ¡ÇƒÇ¢ÇΩÇÁtrueÇ…
-        ishit = Physics.CheckBox(transform.position,Vector3.one * 0.5f,Quaternion.identity,groundLayers);
+        ishit = Physics.CheckBox(transform.position,Vector3.one * 0.9f,Quaternion.identity,groundLayers);
 
         if (ishit)
             isJump = false;
@@ -98,7 +98,7 @@ public class PlayerMove : MonoBehaviour
 
         // ÉWÉÉÉìÉvé¿çs
         if(ishit)
-            this.transform.DOMoveY(5f, 1f).SetEase(ease).SetRelative(true);
+            this.transform.DOMoveY(3f, 0.5f).SetEase(ease).SetRelative(true);
     }
 
     public void SetLocalGravity()
@@ -120,7 +120,7 @@ public class PlayerMove : MonoBehaviour
         }
        
     }
-
+    
 
     public void PlayerDeath()
     {
