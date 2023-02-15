@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
+using Pause;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,18 +15,12 @@ public class GameManager : MonoBehaviour
     private ReactiveProperty<bool> start = new ReactiveProperty<bool>(false);
 
     // 1でミス:2でリスタート
-    public IReadOnlyReactiveProperty<int> RestartProp => restart;
-    private ReactiveProperty<int> restart = new ReactiveProperty<int>(0);
+    public IReadOnlyReactiveProperty<bool> RestartProp => restart;
+    private ReactiveProperty<bool> restart = new ReactiveProperty<bool>(false);
 
     // 終了通知
     public IReadOnlyReactiveProperty<bool> ClearProp => clear;
     private ReactiveProperty<bool> clear = new ReactiveProperty<bool>(false);
-
-    /// <summary>
-    /// フェードアウトの時間
-    /// </summary>
-    [SerializeField]
-    float holdTime = 0.1f;
 
     /// <summary>
     /// ゲーム内時間(フェードアウトが終わってから測り始めたい)
@@ -45,16 +40,32 @@ public class GameManager : MonoBehaviour
     public int restartCount => restartCnt;
     private int restartCnt = 0;
 
+    /// <summary>
+    /// フェードアウトの時間
+    /// </summary>
+    [SerializeField]
+    //float holdTime = 0.1f;
+
+    bool pause = false;
+
     private void Start()
     {
-        player.DeathProp.Where(x => x).Subscribe(x => clear.Value = true);
+        PauseManager.pause.Subscribe(x => pause = x);
+        // ステージクリアイベント
+        player.GetGoal.Where(x => x).Subscribe(x => clear.Value = true);
+        // プレイヤーのミスイベント
+        player.DeathProp.Where(x => x).Subscribe(x => restart.Value = x);
+        // ステージ中の星獲得イベント
         player.GetStar.Where(x => x).Subscribe(x => star++);
     }
 
     void Update()
     {
+        if (pause) return;
+        if (!StartProp.Value) return;
         timer += Time.deltaTime;
     }
+
 
     // 一時停止実装案
     //globalなイベントを作って
