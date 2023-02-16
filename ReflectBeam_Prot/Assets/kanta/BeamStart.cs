@@ -16,7 +16,7 @@ public class BeamStart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       Vector3 endPos =  beamShot.RayShot(transform.position, transform.right, true);
-        beamDrow.DrowShot(endPos, transform.position, true);
+       Vector3 endPos =  beamShot.RayShot(transform.position, transform.right);
+        beamDrow.DrawLine( transform.position, endPos, true);
     }
 }

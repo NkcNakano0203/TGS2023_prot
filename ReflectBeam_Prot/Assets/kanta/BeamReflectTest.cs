@@ -10,7 +10,7 @@ public class BeamReflectTest : MonoBehaviour,IRayRecevier
     Vector3 shotPos;
     bool hit=false;
 
-    public LastHit Hit(Vector3 rayVec, Vector3 rayPos,RaycastHit a)
+    public LastHit RayEnter(Vector3 rayVec, Vector3 rayPos)
     {
         hit = true;
         dir = rayVec;
@@ -30,7 +30,7 @@ public class BeamReflectTest : MonoBehaviour,IRayRecevier
         throw new System.NotImplementedException();
     }
 
-    public void NoHit()
+    public void RayExit()
     {
         throw new System.NotImplementedException();
     }

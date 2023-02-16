@@ -5,6 +5,6 @@ using UnityEngine;
 
 interface IRayRecevier
 {
-    LastHit Hit(Vector3 rayVec, Vector3 rayPos, RaycastHit hit);
-    public void NoHit();
+    LastHit RayEnter(Vector3 rayVec, Vector3 rayPos);
+    public void RayExit();
 }

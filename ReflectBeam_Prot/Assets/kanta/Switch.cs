@@ -6,7 +6,7 @@ public class Switch : MonoBehaviour,IRayRecevier
 {
     
     bool beamHit = false;
-    public LastHit Hit(Vector3 rayVec, Vector3 rayPos,RaycastHit hit)
+    public LastHit RayEnter(Vector3 rayVec, Vector3 rayPos)
     {        
         beamHit = true;
         return new LastHit(this.gameObject.gameObject);
@@ -14,7 +14,7 @@ public class Switch : MonoBehaviour,IRayRecevier
     
 
 
-    public void NoHit()
+    public void RayExit()
     {
          beamHit = false;          
     } 

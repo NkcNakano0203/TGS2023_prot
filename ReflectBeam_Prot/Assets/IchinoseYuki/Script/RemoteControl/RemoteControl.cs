@@ -75,7 +75,7 @@ public class RemoteControl : MonoBehaviour
 
         is_R_Trigger_Pressed = rightAction.IsPressed();
         is_L_Trigger_Pressed = leftAction.IsPressed();
-        //Debug.Log(is_R_Trigger_Pressed + " " + is_L_Trigger_Pressed);
+       //Debug.Log(is_R_Trigger_Pressed + " " + is_L_Trigger_Pressed);
 
         if (is_R_Trigger_Pressed || is_L_Trigger_Pressed)
         {

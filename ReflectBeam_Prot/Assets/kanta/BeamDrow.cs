@@ -4,32 +4,30 @@ using UnityEngine;
 
 public class BeamDrow : MonoBehaviour
 {
-    BeamShot beamShot;
     LineRenderer lineRenderer;
     void Start()
     {
         // 親オブジェクトの持つBeamShotを取得
-        beamShot = transform.parent.gameObject.GetComponent<BeamShot>();
         lineRenderer = GetComponent<LineRenderer>();
     }
 
-    public void DrowShot(Vector3 drowEndPos, Vector3 drowStartPos, bool isDrow)
+    public void DrawLine(Vector3 startPos, Vector3 endPos, bool isDrow)
     {
         lineRenderer.startWidth = 0.15f;
         lineRenderer.endWidth = 0.15f;
 
-        Vector3 startPos = drowStartPos;
-        Vector3 endPos = drowEndPos;
+        Vector3 _startPos = startPos;
+        Vector3 _endPos = endPos; 
 
 
         if (!isDrow)
         {
-            startPos = Vector3.zero;
-            endPos = Vector3.zero;
+            _startPos = Vector3.zero;
+            _endPos = Vector3.zero;
         }
 
-        lineRenderer.SetPosition(0, startPos);
-        lineRenderer.SetPosition(1, endPos);
+        lineRenderer.SetPosition(0, _startPos);
+        lineRenderer.SetPosition(1, _endPos);
     }
 
 }

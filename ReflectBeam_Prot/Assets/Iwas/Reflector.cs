@@ -10,15 +10,14 @@ public class Reflector : MonoBehaviour, ISelectable, IRayRecevier
     [SerializeField]
     BeamDrow beamDrow;
 
+    [SerializeField]
+    float protectionAngle;
+
     Vector3 startPos;
     Vector3 endPos;
 
-    public LastHit Hit(Vector3 rayVec, Vector3 rayPos, RaycastHit hit)
+    public LastHit RayEnter(Vector3 rayVec, Vector3 rayPos)
     {
-        // いらないかも
-        bool isDrow = true;
-
-
         LastHit s = new LastHit(gameObject);
 
         Vector3 nor_RayVec = rayVec.normalized;
@@ -28,8 +27,10 @@ public class Reflector : MonoBehaviour, ISelectable, IRayRecevier
 
         float dot = Vector3.Dot(nor_RayVec, nor_inNor);
 
-        if ((dot >= 0 && dot <= 0.1f) || (dot <= 0 && dot >= -0.1f))
-        {           
+        bool isReflectProtection = Mathf.Abs(dot) < protectionAngle;
+        if (isReflectProtection)
+        {
+            RayExit();
             return s;
         }
 
@@ -41,9 +42,9 @@ public class Reflector : MonoBehaviour, ISelectable, IRayRecevier
         Vector3 reflectVec = Vector3.Reflect(rayVec, normal);
 
         // レイを再度飛ばす
-        this.startPos = rayPos;
-        endPos = beamShot.RayShot(rayPos, reflectVec, isDrow);
-        beamDrow.DrowShot(endPos, startPos, true);
+        startPos = rayPos;
+        endPos = beamShot.RayShot(rayPos, reflectVec);
+        beamDrow.DrawLine(startPos, endPos, true);
 
         return s;
     }
@@ -54,10 +55,10 @@ public class Reflector : MonoBehaviour, ISelectable, IRayRecevier
         throw new System.NotImplementedException();
     }
 
-    public void NoHit()
+    public void RayExit()
     {
         // ビームの描写を消す
-        beamDrow.DrowShot(endPos, startPos, false);
+        beamDrow.DrawLine(startPos, endPos, false);
 
     }
 }
