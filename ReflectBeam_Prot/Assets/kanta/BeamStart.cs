@@ -5,15 +5,17 @@ using UnityEngine;
 public class BeamStart : MonoBehaviour
 {
     BeamShot beamShot;
+    BeamDrow beamDrow;
     void Start()
     {
         beamShot = GetComponent<BeamShot>();
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        beamShot.RayShot(transform.position, transform.right);
+        beamShot.RayShot(transform.position, transform.right, true);
+
     }
 }
