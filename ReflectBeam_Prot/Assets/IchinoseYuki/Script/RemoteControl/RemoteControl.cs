@@ -54,7 +54,8 @@ public class RemoteControl : MonoBehaviour
         
         // 最大順番数を代入
         maxObjectNumber = refrecters.Length;
-        refrecters[objectNumber].GetComponent<MeshRenderer>().material = red;
+        //TODO:選択UIカーソルにしたい
+        //refrecters[objectNumber].GetComponent<MeshRenderer>().material = red;
 
         rightAction = playerInput.actions["RemoteControl_R_Trigger"];
         leftAction = playerInput.actions["RemoteControl_L_Trigger"];

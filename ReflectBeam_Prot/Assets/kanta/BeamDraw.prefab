@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2207980160777478566}
   - component: {fileID: 2207980160777478567}
   m_Layer: 0
-  m_Name: BeamDrow
+  m_Name: BeamDraw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
