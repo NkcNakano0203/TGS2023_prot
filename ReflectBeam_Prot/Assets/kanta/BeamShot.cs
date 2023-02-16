@@ -32,9 +32,9 @@ public class BeamShot : MonoBehaviour
             return;
         }
 
-        if(hitObj != lastHit.lastHitObj)
+        if (hitObj != lastHit.lastHitObj)
         {
-           if( hitObj.TryGetComponent(out IRayRecevier rayRecevier));
+            if (hitObj.TryGetComponent(out IRayRecevier rayRecevier))
             {
                 rayRecevier.NoHit();
             }
@@ -44,7 +44,7 @@ public class BeamShot : MonoBehaviour
 
     // レイを出す初期位置,レイを飛ばす方向ベクトル
     //レイを飛ばす処理(これを打ち出す処理が呼び出す)
-    public Vector3 RayShot(Vector3 origin, Vector3 direction,bool isDrow)
+    public Vector3 RayShot(Vector3 origin, Vector3 direction, bool isDrow)
     {
         //raylengthをかけた時オーバーフローさせないため
         direction = direction.normalized;
@@ -78,6 +78,6 @@ public class BeamShot : MonoBehaviour
             hitObj = hit.collider.gameObject;
             irayRecevier.Hit(direction, hit.point, hit);
         }
-        
+
     }
 }
