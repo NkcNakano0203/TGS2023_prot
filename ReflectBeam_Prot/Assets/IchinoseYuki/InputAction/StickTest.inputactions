@@ -13,6 +13,42 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "RemoteControl_R_Shoulder",
+                    "type": "Button",
+                    "id": "1438ce4a-b5f1-4501-b621-e7c51e7bdd52",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RemoteControl_L_Shoulder",
+                    "type": "Button",
+                    "id": "c15f310d-d92e-4c5c-99d9-b5d866322034",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RemoteControl_R_Trigger",
+                    "type": "Button",
+                    "id": "57f9d5e9-e203-4afd-9df6-e0ebc449068a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RemoteControl_L_Trigger",
+                    "type": "Button",
+                    "id": "1edf5dbc-9704-4eae-a783-ea1cf7b456b1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -24,6 +60,50 @@
                     "processors": "StickDeadzone(min=0.9,max=1)",
                     "groups": "",
                     "action": "Stick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b4c3124b-8bd9-4835-a065-464538908f07",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RemoteControl_R_Shoulder",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3f6d40f4-ca84-4246-9eaf-a8fabc1a5347",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RemoteControl_L_Shoulder",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2cd21c18-1e10-4e30-a5ca-8437d270d2a4",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RemoteControl_R_Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fe94d15c-5ce2-42e6-aae2-26723d7285fa",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RemoteControl_L_Trigger",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

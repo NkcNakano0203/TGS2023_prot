@@ -63,6 +63,7 @@ public class RightStick_GimmickSelection : MonoBehaviour
     /// </summary>
     private void RightStickDegree(InputAction.CallbackContext context)
     {
+        if(context.action.name != "Stick") { return; }
         if (!isSelect) { return; }
         isSelect = false;
 
