@@ -21,9 +21,13 @@ public class BeamDrow : MonoBehaviour
 
     public void DrowShot(Vector3 drowEndPos, Vector3 drowStartPos, bool isDrow)
     {
+        lineRenderer.startWidth = 0.15f;
+        lineRenderer.endWidth = 0.15f;
+
         Vector3 startPos = drowStartPos;
         Vector3 endPos = drowEndPos;
 
+       
         if (!isDrow)
         {
             Debug.Log("ƒŠƒZƒbƒg");
@@ -34,4 +38,5 @@ public class BeamDrow : MonoBehaviour
         lineRenderer.SetPosition(0, startPos);
         lineRenderer.SetPosition(1, endPos);
     }
+
 }

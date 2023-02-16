@@ -30,7 +30,10 @@ public class BeamReflectTest : MonoBehaviour,IRayRecevier
         throw new System.NotImplementedException();
     }
 
-
+    public void NoHit()
+    {
+        throw new System.NotImplementedException();
+    }
 
     void Start()
     {

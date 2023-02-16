@@ -5,6 +5,7 @@ using UnityEngine;
 public class BeamStart : MonoBehaviour
 {
     BeamShot beamShot;
+    [SerializeField]
     BeamDrow beamDrow;
     void Start()
     {
@@ -15,7 +16,7 @@ public class BeamStart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        beamShot.RayShot(transform.position, transform.right, true);
-
+       Vector3 endPos =  beamShot.RayShot(transform.position, transform.right, true);
+        beamDrow.DrowShot(endPos, transform.position, true);
     }
 }

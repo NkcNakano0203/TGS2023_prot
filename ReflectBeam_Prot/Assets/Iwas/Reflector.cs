@@ -9,12 +9,18 @@ public class Reflector : MonoBehaviour, ISelectable, IRayRecevier
     [SerializeField]
     BeamShot beamShot;
 
+    [SerializeField]
+    BeamDrow beamDrow;
+
+    Vector3 startPos;
+    Vector3 endPos;
+
     public GameObject obj;
 
-    public LastHit Hit(Vector3 rayVec, Vector3 rayPos,RaycastHit hit)
+    public LastHit Hit(Vector3 rayVec, Vector3 rayPos, RaycastHit hit)
     {
         bool isDrow = true;
-        LastHit s = new LastHit();
+        LastHit s = new LastHit(gameObject);
 
         Vector3 nor_RayVec = rayVec.normalized;
         Vector3 nor_inNor = transform.up;
@@ -39,18 +45,23 @@ public class Reflector : MonoBehaviour, ISelectable, IRayRecevier
         // ÉåÉCÇçƒìxîÚÇŒÇ∑
         //beamRaycast.Ray(reflectVec, rayPos);
 
-        if (hit.collider.gameObject != this)
-        {
-            isDrow = false;
-        }
-        
-        beamShot.RayShot(rayPos, reflectVec,isDrow);
+        Debug.Log(isDrow);
+        this.startPos = rayPos;
+        endPos = beamShot.RayShot(rayPos, reflectVec, isDrow);
+        beamDrow.DrowShot(endPos, startPos, true);
 
         return s;
     }
 
+
     public SelectAreaInfo GetScale()
     {
         throw new System.NotImplementedException();
+    }
+
+    public void NoHit()
+    {
+        beamDrow.DrowShot(endPos, startPos, false);
+
     }
 }
