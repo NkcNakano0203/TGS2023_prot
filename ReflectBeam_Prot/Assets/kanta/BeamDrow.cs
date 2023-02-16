@@ -13,12 +13,6 @@ public class BeamDrow : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void DrowShot(Vector3 drowEndPos, Vector3 drowStartPos, bool isDrow)
     {
         lineRenderer.startWidth = 0.15f;

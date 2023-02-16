@@ -19,7 +19,10 @@ public class Reflector : MonoBehaviour, ISelectable, IRayRecevier
 
     public LastHit Hit(Vector3 rayVec, Vector3 rayPos, RaycastHit hit)
     {
+        // いらないかも
         bool isDrow = true;
+
+
         LastHit s = new LastHit(gameObject);
 
         Vector3 nor_RayVec = rayVec.normalized;
@@ -30,8 +33,7 @@ public class Reflector : MonoBehaviour, ISelectable, IRayRecevier
         float dot = Vector3.Dot(nor_RayVec, nor_inNor);
 
         if ((dot >= 0 && dot <= 0.1f) || (dot <= 0 && dot >= -0.1f))
-        {
-            Debug.Log("waaaaaaaaaaaaa");
+        {           
             return s;
         }
 
@@ -43,9 +45,6 @@ public class Reflector : MonoBehaviour, ISelectable, IRayRecevier
         Vector3 reflectVec = Vector3.Reflect(rayVec, normal);
 
         // レイを再度飛ばす
-        //beamRaycast.Ray(reflectVec, rayPos);
-
-        Debug.Log(isDrow);
         this.startPos = rayPos;
         endPos = beamShot.RayShot(rayPos, reflectVec, isDrow);
         beamDrow.DrowShot(endPos, startPos, true);
@@ -61,6 +60,7 @@ public class Reflector : MonoBehaviour, ISelectable, IRayRecevier
 
     public void NoHit()
     {
+        // ビームの描写を消す
         beamDrow.DrowShot(endPos, startPos, false);
 
     }
