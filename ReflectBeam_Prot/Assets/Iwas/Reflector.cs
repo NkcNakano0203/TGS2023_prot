@@ -5,8 +5,6 @@ using UnityEngine;
 public class Reflector : MonoBehaviour, ISelectable, IRayRecevier
 {
     [SerializeField]
-    BeamRaycast beamRaycast;
-    [SerializeField]
     BeamShot beamShot;
 
     [SerializeField]
@@ -14,8 +12,6 @@ public class Reflector : MonoBehaviour, ISelectable, IRayRecevier
 
     Vector3 startPos;
     Vector3 endPos;
-
-    public GameObject obj;
 
     public LastHit Hit(Vector3 rayVec, Vector3 rayPos, RaycastHit hit)
     {

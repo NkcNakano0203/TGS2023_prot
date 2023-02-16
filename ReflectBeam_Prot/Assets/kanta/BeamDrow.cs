@@ -21,14 +21,13 @@ public class BeamDrow : MonoBehaviour
         Vector3 startPos = drowStartPos;
         Vector3 endPos = drowEndPos;
 
-       
+
         if (!isDrow)
         {
-            Debug.Log("ƒŠƒZƒbƒg");
             startPos = Vector3.zero;
             endPos = Vector3.zero;
         }
-       
+
         lineRenderer.SetPosition(0, startPos);
         lineRenderer.SetPosition(1, endPos);
     }

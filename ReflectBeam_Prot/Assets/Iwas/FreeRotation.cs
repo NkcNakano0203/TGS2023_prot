@@ -7,9 +7,6 @@ using DG.Tweening;
 public class FreeRotation : MonoBehaviour, IRotatable
 {
     [SerializeField]
-    PlayerInput playerInput;
-
-    [SerializeField]
     float theta;
     public void LeftRotate(bool isLeftRotate,bool isRightRotate)
     {

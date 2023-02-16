@@ -27,8 +27,7 @@ public class BeamShot : MonoBehaviour
     private void Update()
     {
         if (hitObj == null)
-        {
-            Debug.Log("a");
+        {            
             return;
         }
 
