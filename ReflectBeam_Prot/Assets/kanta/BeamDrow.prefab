@@ -42,9 +42,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2207980160777478553}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f556215c3b837d1438cd6b94f8bcdc92, type: 3}
+  m_Script: {fileID: 11500000, guid: f9994cf939dcce74391460d1edd34886, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startWidth: 0.15
+  endWidth: 0.15
 --- !u!120 &2207980160777478567
 LineRenderer:
   m_ObjectHideFlags: 0

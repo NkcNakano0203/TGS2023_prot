@@ -8,10 +8,10 @@ public class Reflector : MonoBehaviour, ISelectable, IRayRecevier
     BeamShot beamShot;
 
     [SerializeField]
-    BeamDrow beamDrow;
+    BeamDraw beamDraw;
 
     [SerializeField]
-    float protectionAngle;
+    float protectionAngle = 0.1f;
 
     Vector3 startPos;
     Vector3 endPos;
@@ -44,7 +44,7 @@ public class Reflector : MonoBehaviour, ISelectable, IRayRecevier
         // レイを再度飛ばす
         startPos = rayPos;
         endPos = beamShot.RayShot(rayPos, reflectVec);
-        beamDrow.DrawLine(startPos, endPos, true);
+        beamDraw.DrawLine(startPos, endPos, true);
 
         return s;
     }
@@ -58,7 +58,7 @@ public class Reflector : MonoBehaviour, ISelectable, IRayRecevier
     public void RayExit()
     {
         // ビームの描写を消す
-        beamDrow.DrawLine(startPos, endPos, false);
+        beamDraw.DrawLine(startPos, endPos, false);
 
     }
 }

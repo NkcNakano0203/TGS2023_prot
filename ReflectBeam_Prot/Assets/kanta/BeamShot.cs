@@ -4,13 +4,8 @@ using UnityEngine;
 
 public class BeamShot : MonoBehaviour
 {
-
-    [SerializeField]
-    BeamDrow beamDrow;
     GameObject hitObj;
-
     RaycastHit raycastHit;
-
     LastHit lastHit;
 
     private void Update()

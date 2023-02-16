@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class BeamStart : MonoBehaviour
 {
-    BeamShot beamShot;
     [SerializeField]
-    BeamDrow beamDrow;
+    BeamDraw beamDraw;
+
+    BeamShot beamShot;
+
     void Start()
     {
         beamShot = GetComponent<BeamShot>();
@@ -16,7 +18,7 @@ public class BeamStart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       Vector3 endPos =  beamShot.RayShot(transform.position, transform.right);
-        beamDrow.DrawLine( transform.position, endPos, true);
+        Vector3 endPos = beamShot.RayShot(transform.position, transform.up);
+        beamDraw.DrawLine(transform.position, endPos, true);
     }
 }
