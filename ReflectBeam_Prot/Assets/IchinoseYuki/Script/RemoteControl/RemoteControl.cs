@@ -75,7 +75,7 @@ public class RemoteControl : MonoBehaviour
 
         is_R_Trigger_Pressed = rightAction.IsPressed();
         is_L_Trigger_Pressed = leftAction.IsPressed();
-        Debug.Log(is_R_Trigger_Pressed + " " + is_L_Trigger_Pressed);
+        //Debug.Log(is_R_Trigger_Pressed + " " + is_L_Trigger_Pressed);
 
         if (is_R_Trigger_Pressed || is_L_Trigger_Pressed)
         {
@@ -104,7 +104,7 @@ public class RemoteControl : MonoBehaviour
             return;
         }
 
-        Debug.Log("R1ボタン" + context.ReadValueAsButton());
+        //Debug.Log("R1ボタン" + context.ReadValueAsButton());
         bool isButtonDown = context.ReadValueAsButton();
 
         refrecters[objectNumber].GetComponent<MeshRenderer>().material = white;
@@ -118,7 +118,7 @@ public class RemoteControl : MonoBehaviour
             objectNumber = 0;
         }
 
-        Debug.Log("最大数" + maxObjectNumber + " " + "現在の数" + objectNumber);
+        //Debug.Log("最大数" + maxObjectNumber + " " + "現在の数" + objectNumber);
         refrecters[objectNumber].GetComponent<MeshRenderer>().material = red;
     }
 
@@ -138,7 +138,7 @@ public class RemoteControl : MonoBehaviour
             return;
         }
 
-        Debug.Log("L1ボタン" + context.ReadValueAsButton());
+        //Debug.Log("L1ボタン" + context.ReadValueAsButton());
         bool isButtonDown = context.ReadValueAsButton();
 
         refrecters[objectNumber].GetComponent<MeshRenderer>().material = white;
@@ -152,7 +152,7 @@ public class RemoteControl : MonoBehaviour
             objectNumber--;
         }
 
-        Debug.Log("最大数" + maxObjectNumber + " " + "現在の数" + objectNumber);
+        //Debug.Log("最大数" + maxObjectNumber + " " + "現在の数" + objectNumber);
         refrecters[objectNumber].GetComponent<MeshRenderer>().material = red;
     }
 
@@ -172,7 +172,7 @@ public class RemoteControl : MonoBehaviour
             return;
         }
 
-        Debug.Log("R2ボタン" + context.ReadValueAsButton());
+        //Debug.Log("R2ボタン" + context.ReadValueAsButton());
         fixedRotation = refrecters[objectNumber].GetComponent<FixedRotation>();
         if (fixedRotation)
         {
@@ -196,7 +196,7 @@ public class RemoteControl : MonoBehaviour
             return;
         }
 
-        Debug.Log("L2ボタン" + context.ReadValueAsButton());
+        //Debug.Log("L2ボタン" + context.ReadValueAsButton());
         fixedRotation = refrecters[objectNumber].GetComponent<FixedRotation>();
         if (fixedRotation)
         {
