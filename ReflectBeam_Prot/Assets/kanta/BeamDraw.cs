@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BeamDraw : MonoBehaviour
 {
+    List<Vector3> linePos = new List<Vector3>();
+
     LineRenderer lineRenderer;
 
     [SerializeField]
@@ -14,6 +16,27 @@ public class BeamDraw : MonoBehaviour
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
+    }
+
+    public void AddList(Vector3 middlePos)
+    {
+        Debug.Log("’Ç‰Á‚·‚é‚æ");
+        linePos.Add(middlePos);
+    }
+    public void RemoveList(Vector3 middlePos)
+    {
+        linePos.Remove(middlePos);
+    }
+
+
+    public void DrawLine()
+    {
+        lineRenderer.positionCount = linePos.Count;
+        lineRenderer.SetPositions(linePos.ToArray());
+        foreach (var item in linePos)
+        {
+            Debug.Log(item);
+        }
     }
 
     public void DrawLine(Vector3 drawStartPos, Vector3 drawEndPos, bool isDraw)

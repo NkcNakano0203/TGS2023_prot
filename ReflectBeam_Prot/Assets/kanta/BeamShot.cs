@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BeamShot : MonoBehaviour
 {
+    [SerializeField]
+    BeamDraw beamDraw;
+
     GameObject hitObj;
     RaycastHit raycastHit;
     LastHit lastHit;
@@ -14,7 +17,7 @@ public class BeamShot : MonoBehaviour
         {
             return;
         }
-
+        Debug.Log(lastHit.lastHitObj);
         if (hitObj != lastHit.lastHitObj)
         {
             if (hitObj.TryGetComponent(out IRayRecevier rayRecevier))
@@ -34,6 +37,8 @@ public class BeamShot : MonoBehaviour
 
 
         RaycastHit[] hits = Physics.RaycastAll(origin, direction);
+        Debug.DrawRay(origin, direction, Color.red);
+
 
         foreach (var item in hits)
         {
@@ -56,6 +61,16 @@ public class BeamShot : MonoBehaviour
             {
                 hitObj = item.collider.gameObject;
                 irayRecevier.RayEnter(direction, item.point);
+
+               bool hoge = item.collider.gameObject.TryGetComponent(out Reflector reflector);
+
+                //
+
+                //
+
+                
+                reflector.SetAction(beamDraw.AddList);
+
                 break;
             }
         }

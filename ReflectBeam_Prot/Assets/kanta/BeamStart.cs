@@ -8,17 +8,24 @@ public class BeamStart : MonoBehaviour
     BeamDraw beamDraw;
 
     BeamShot beamShot;
+    Vector3 endPos;
 
     void Start()
     {
         beamShot = GetComponent<BeamShot>();
-
+        beamDraw.AddList(transform.position);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 endPos = beamShot.RayShot(transform.position, transform.up);
-        beamDraw.DrawLine(transform.position, endPos, true);
+        if (endPos != Vector3.zero)
+            beamDraw.RemoveList(endPos);
+        endPos = beamShot.RayShot(transform.position, transform.up);
+        // beamDraw.DrawLine(transform.position, endPos, true);
+        
+      
+        beamDraw.AddList(endPos);
+        beamDraw.DrawLine();
     }
 }
