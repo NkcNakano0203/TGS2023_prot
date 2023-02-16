@@ -6,11 +6,14 @@ public class Reflector : MonoBehaviour, ISelectable, IRayRecevier
 {
     [SerializeField]
     BeamRaycast beamRaycast;
+    [SerializeField]
+    BeamShot beamShot;
 
     public GameObject obj;
 
-    public LastHit Hit(Vector3 rayVec, Vector3 rayPos)
+    public LastHit Hit(Vector3 rayVec, Vector3 rayPos,RaycastHit hit)
     {
+        bool isDrow = true;
         LastHit s = new LastHit();
 
         Vector3 nor_RayVec = rayVec.normalized;
@@ -27,15 +30,21 @@ public class Reflector : MonoBehaviour, ISelectable, IRayRecevier
         }
 
         Vector3 normal = (dot < 0) ? -inNormal : inNormal;
-        // Debug.Log(normal);
-        Debug.DrawRay(transform.position, normal, Color.blue);
 
+        Debug.DrawRay(transform.position, normal, Color.blue);
 
         // ベクトルを反射させる
         Vector3 reflectVec = Vector3.Reflect(rayVec, normal);
 
         // レイを再度飛ばす
-        beamRaycast.Ray(reflectVec, rayPos);
+        //beamRaycast.Ray(reflectVec, rayPos);
+
+        if (hit.collider.gameObject != this)
+        {
+            isDrow = false;
+        }
+        
+        beamShot.RayShot(rayPos, reflectVec,isDrow);
 
         return s;
     }

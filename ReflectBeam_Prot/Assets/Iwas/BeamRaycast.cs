@@ -20,6 +20,6 @@ public class BeamRaycast : MonoBehaviour
             return;
         //Debug.Log(hit.point);
 
-        rayRecevier.Hit(rayvec,hit.point);
+      //  rayRecevier.Hit(rayvec,hit.point);
     }
 }

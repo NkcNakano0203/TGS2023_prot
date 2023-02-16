@@ -10,7 +10,7 @@ public class BeamReflectTest : MonoBehaviour,IRayRecevier
     Vector3 shotPos;
     bool hit=false;
 
-    public LastHit Hit(Vector3 rayVec, Vector3 rayPos)
+    public LastHit Hit(Vector3 rayVec, Vector3 rayPos,RaycastHit a)
     {
         hit = true;
         dir = rayVec;
@@ -19,11 +19,11 @@ public class BeamReflectTest : MonoBehaviour,IRayRecevier
         {
             if (Vector3.Dot(transform.right, -dir) > 0)
             {
-                beamShot.RayShot(shotPos, Vector3.Reflect(dir, transform.right));
+               // beamShot.RayShot(shotPos, Vector3.Reflect(dir, transform.right));
             }
             else if (Vector3.Dot(transform.right, -dir) < 0)
             {
-                beamShot.RayShot(shotPos, Vector3.Reflect(dir, -transform.right));
+               // beamShot.RayShot(shotPos, Vector3.Reflect(dir, -transform.right));
             }
             hit = false;
         }

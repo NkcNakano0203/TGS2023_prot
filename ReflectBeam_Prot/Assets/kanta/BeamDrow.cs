@@ -16,11 +16,22 @@ public class BeamDrow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (beamShot.GetHit().point!=Vector3.zero)
+
+    }
+
+    public void DrowShot(Vector3 drowEndPos, Vector3 drowStartPos, bool isDrow)
+    {
+        Vector3 startPos = drowStartPos;
+        Vector3 endPos = drowEndPos;
+
+        if (!isDrow)
         {
-            lineRenderer.SetWidth(0.3f, 0.3f);
-            lineRenderer.SetPosition(0, beamShot.transform.position);
-            lineRenderer.SetPosition(1, beamShot.GetHit().point);
+            Debug.Log("ƒŠƒZƒbƒg");
+            startPos = Vector3.zero;
+            endPos = Vector3.zero;
         }
+       
+        lineRenderer.SetPosition(0, startPos);
+        lineRenderer.SetPosition(1, endPos);
     }
 }
