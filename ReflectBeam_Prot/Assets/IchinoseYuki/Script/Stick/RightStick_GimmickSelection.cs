@@ -149,7 +149,6 @@ public class RightStick_GimmickSelection : MonoBehaviour
 
         List<GameObject> obj = gimmicks.ToList();
         objectNumber = obj.IndexOf(currentSelectGimmick);
-        Debug.Log(objectNumber);
 
         currentObjectNumber?.Invoke(objectNumber);
 

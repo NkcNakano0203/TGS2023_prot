@@ -107,7 +107,7 @@ public class RemoteControl : MonoBehaviour
         //Debug.Log("R1ƒ{ƒ^ƒ“" + context.ReadValueAsButton());
         bool isButtonDown = context.ReadValueAsButton();
 
-        refrecters[objectNumber].GetComponent<MeshRenderer>().material = white;
+        //refrecters[objectNumber].GetComponent<MeshRenderer>().material = white;
 
         if (maxObjectNumber - 1 > objectNumber)
         {
@@ -119,7 +119,7 @@ public class RemoteControl : MonoBehaviour
         }
 
         //Debug.Log("Å‘å”" + maxObjectNumber + " " + "Œ»İ‚Ì”" + objectNumber);
-        refrecters[objectNumber].GetComponent<MeshRenderer>().material = red;
+        //refrecters[objectNumber].GetComponent<MeshRenderer>().material = red;
     }
 
     /// <summary>
@@ -153,7 +153,7 @@ public class RemoteControl : MonoBehaviour
         }
 
         //Debug.Log("Å‘å”" + maxObjectNumber + " " + "Œ»İ‚Ì”" + objectNumber);
-        refrecters[objectNumber].GetComponent<MeshRenderer>().material = red;
+        //refrecters[objectNumber].GetComponent<MeshRenderer>().material = red;
     }
 
     /// <summary>

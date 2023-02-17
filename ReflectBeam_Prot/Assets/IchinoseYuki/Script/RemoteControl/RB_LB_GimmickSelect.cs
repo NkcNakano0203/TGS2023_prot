@@ -83,11 +83,11 @@ public class RB_LB_GimmickSelect : MonoBehaviour
         // RかLのトリガーが押されているとき回転させる
         if (is_R_Trigger_Pressed || is_L_Trigger_Pressed)
         {
-            freeRotation = gimmicks[objectNumber].GetComponent<FreeRotation>();
+            freeRotation = gimmicks[objectNumber].transform.GetChild(0).gameObject.GetComponent<FreeRotation>();
             if (freeRotation)
             {
-                gimmicks[objectNumber].GetComponent<FreeRotation>().RightRotate(is_L_Trigger_Pressed, is_R_Trigger_Pressed);
-                gimmicks[objectNumber].GetComponent<FreeRotation>().LeftRotate(is_L_Trigger_Pressed, is_R_Trigger_Pressed);
+                freeRotation.RightRotate(is_L_Trigger_Pressed, is_R_Trigger_Pressed);
+                freeRotation.LeftRotate(is_L_Trigger_Pressed, is_R_Trigger_Pressed);
             }
         }
     }
@@ -99,8 +99,6 @@ public class RB_LB_GimmickSelect : MonoBehaviour
     {
         // ポーズ中は早期リターン
         //if (isPause == true){return;}
-
-        Debug.Log("R1が押されたよ!");
 
         if (maxObjectNumber - 1 > objectNumber)
         {
@@ -125,8 +123,6 @@ public class RB_LB_GimmickSelect : MonoBehaviour
     {
         // ポーズ中は早期リターン
         //if (isPause == true) { return; }
-
-        Debug.Log(objectNumber);
 
         if (objectNumber == 0)
         {
