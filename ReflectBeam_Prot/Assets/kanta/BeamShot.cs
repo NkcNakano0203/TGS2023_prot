@@ -62,14 +62,9 @@ public class BeamShot : MonoBehaviour
                 hitObj = item.collider.gameObject;
                 irayRecevier.RayEnter(direction, item.point);
 
-               bool hoge = item.collider.gameObject.TryGetComponent(out Reflector reflector);
+                bool hoge = item.collider.gameObject.TryGetComponent(out Reflector reflector);
 
-                //
-
-                //
-
-                
-                reflector.SetAction(beamDraw.AddList);
+                               
 
                 break;
             }

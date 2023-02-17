@@ -49,13 +49,14 @@ public class Reflector : MonoBehaviour, ISelectable, IRayRecevier
         //Debug.Log(endPos);
         //action.Invoke(endPos);
         //beamDraw.DrawLine(startPos, endPos, true);
-
+        beamDraw.AddList(endPos);
         return s;
     }
 
     public void SetAction(System.Action<Vector3> action)
     {
         this.action = action;
+        Debug.Log(action);
     }
 
 

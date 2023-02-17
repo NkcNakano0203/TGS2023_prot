@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BeamDraw : MonoBehaviour
 {
-    List<Vector3> linePos = new List<Vector3>();
+    BeamPointList beamPointList = new BeamPointList();
 
     LineRenderer lineRenderer;
 
@@ -21,19 +21,19 @@ public class BeamDraw : MonoBehaviour
     public void AddList(Vector3 middlePos)
     {
         Debug.Log("’Ç‰Á‚·‚é‚æ");
-        linePos.Add(middlePos);
+        beamPointList.AddList(middlePos);
     }
     public void RemoveList(Vector3 middlePos)
     {
-        linePos.Remove(middlePos);
+        beamPointList.RemoveList(middlePos);
     }
 
 
     public void DrawLine()
     {
-        lineRenderer.positionCount = linePos.Count;
-        lineRenderer.SetPositions(linePos.ToArray());
-        foreach (var item in linePos)
+        lineRenderer.positionCount = beamPointList.GetCountList();
+        lineRenderer.SetPositions(beamPointList.GetList());
+        foreach (var item in beamPointList.GetList())
         {
             Debug.Log(item);
         }
