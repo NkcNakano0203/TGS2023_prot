@@ -17,31 +17,12 @@ public class RightStick_GimmickSelection : MonoBehaviour
     // ギミックを保管する配列
     private GameObject[] gimmicks;
     private GimmickList gimmickList;
-
-    // オブジェクトの順番
-    private int objectNumber;
-
     // 現在選択中のギミック
     private GameObject currentSelectGimmick;
-
-    // 角度を保存するリスト
-    private List<float> angles;
-
-    // 比較するギミックを保存しておくリスト
-    private List<GameObject> gimmickObjects;
-
-    // 一時的にギミックを保存しておく変数
-    //private GameObject temporaryGimick;
-
-    // 最小の角度を保存する変数
-    private float minAngle;
     // 右スティックの入力ベクトルを保存する変数
     private Vector2 rightStickValue;
-
     // 選択を変えることができるか判定するフラグ
     private bool isSelect = true;
-
-    // メインカメラ
     private Camera mainCamera;
     // エイム画像を入れたオブジェクト
     private GameObject aimImage;
@@ -84,25 +65,16 @@ public class RightStick_GimmickSelection : MonoBehaviour
     private void RightStickDegree(InputAction.CallbackContext context)
     {
         // スティック入力以外はリターン
-        if(context.action.name != "RightStick") { return; }
+        if (context.action.name != "RightStick") { return; }
         // 選択を変更できるか判断するフラグがfalseの時はリターン
         if (!isSelect) { return; }
         isSelect = false;
 
         // 右スティックの角度を取得
         rightStickValue = context.ReadValue<Vector2>();
-
-        // 傾き角度が0以外の時
-        if (rightStickValue != Vector2.zero)
-        {
-            // ソートメソッドを実行
-            SortSelect();
-        }
-        else
-        {
-            // 選択できるようにする
-            isSelect = true;
-        }
+        // 傾き角度が0以外の時ソートメソッドを実行
+        if (rightStickValue != Vector2.zero) { SortSelect(); }
+        else { isSelect = true; }
     }
 
     /// <summary>
@@ -111,9 +83,8 @@ public class RightStick_GimmickSelection : MonoBehaviour
     private async void SortSelect()
     {
         // リストの初期化
-        angles = new List<float>();
-        gimmickObjects = new List<GameObject>();
-
+        List<float> angles = new List<float>();
+        List<GameObject> gimmickObjects = new List<GameObject>();
         // 現在選択しているギミックをそれ以外と比較して角度を求める
         foreach (GameObject t in gimmicks)
         {
@@ -126,44 +97,21 @@ public class RightStick_GimmickSelection : MonoBehaviour
             }
         }
 
-        // 比較用に大きい数字を代入しておく
-        //minAngle = 1000f;
-        // ソート
-        /*
-        for (int i = 0; i < angles.Count; ++i)
-        {
-            if (minAngle > angles[i] && angles[i] != 0)
-            {
-                minAngle = angles[i];
-                temporaryGimick = gimmickObjects[i];
-            }
-        }
-        */
-
         // Linqって便利！
         // 最小角度をソートして代入
-        minAngle = angles.Min();
+        float minAngle = angles.Min();
         // 最小角度が何番目のオブジェクトか調べて一時保存変数に入れる
         currentSelectGimmick = gimmickObjects[angles.IndexOf(minAngle)];
-        //objectNumber = angles.IndexOf(minAngle);
 
         List<GameObject> obj = gimmicks.ToList();
-        objectNumber = obj.IndexOf(currentSelectGimmick);
+        int objectNumber = obj.IndexOf(currentSelectGimmick);
 
         currentObjectNumber?.Invoke(objectNumber);
 
-
         var targetWorldPos = currentSelectGimmick.transform.position;
-
         var targetScreenPos = mainCamera.WorldToScreenPoint(targetWorldPos);
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            aimRect,
-            targetScreenPos,
-            null,
-            out var uiLocalPos
-            );
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(aimRect, targetScreenPos, null, out var uiLocalPos);
         aimImage.transform.localPosition = uiLocalPos;
-
         // 待機する
         await UniTask.Delay(TimeSpan.FromSeconds(0.2f));
         // 選択できるようにする

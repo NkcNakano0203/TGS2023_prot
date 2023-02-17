@@ -1,8 +1,6 @@
 // 作成日02/17日金曜日 製作者:市瀬
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System;
-using System.Linq;
 
 /// <summary>
 /// RBとLBでギミック選択をするスクリプト
@@ -15,11 +13,9 @@ public class RB_LB_GimmickSelect : MonoBehaviour
     // ギミックを保管する配列
     private GameObject[] gimmicks;
     private GimmickList gimmickList;
-
-
     // オブジェクトの順番
     private int objectNumber;
-    // 最大順番数
+    // 最大オブジェクト数
     private int maxObjectNumber;
 
     private InputAction leftAction;
@@ -27,7 +23,6 @@ public class RB_LB_GimmickSelect : MonoBehaviour
     private bool is_R_Trigger_Pressed;
     private bool is_L_Trigger_Pressed;
     private FreeRotation freeRotation;
-    private FixedRotation fixedRotation;
 
     //bool isPause = PauseManager.pause.Value;
 
@@ -40,33 +35,25 @@ public class RB_LB_GimmickSelect : MonoBehaviour
 
     private void Start()
     {
-        // 孫オブジェクトを取得
-        aimImage = transform.Find("aimUICanvas/aimImage").gameObject;
-        aimRect = aimImage.transform.parent.GetComponent<RectTransform>();
-        mainCamera = Camera.main;
-
         playerInput = GetComponent<PlayerInput>();
         gimmickList = GetComponent<GimmickList>();
-
         // ギミック取得
         gimmicks = gimmickList.gimmickLists;
-
+        maxObjectNumber = gimmicks.Length;
+        // イベント登録
         RightStick_GimmickSelection rightStick_GimmickSelection = GetComponent<RightStick_GimmickSelection>();
         rightStick_GimmickSelection.currentObjectNumber += CurrentObjectNumber;
-
         // デリゲート登録
         playerInput.actions["L_Shoulder"].performed += On_R_ShoulderButton;
         playerInput.actions["R_Shoulder"].performed += On_L_ShoulderButton;
         playerInput.actions["R_Trigger"].started += On_R_TriggerButton;
         playerInput.actions["L_Trigger"].started += On_L_TriggerButton;
 
-        // 最大順番数を代入
-        maxObjectNumber = gimmicks.Length;
-        // 照準移動
-        Vector3 targetWorldPos = gimmicks[0].transform.position;
-        Vector3 targetScreenPos = mainCamera.WorldToScreenPoint(targetWorldPos);
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(aimRect, targetScreenPos, null, out var uiLocalPos);
-        aimImage.transform.localPosition = uiLocalPos;
+        // 孫オブジェクトを取得
+        aimImage = transform.Find("aimUICanvas/aimImage").gameObject;
+        aimRect = aimImage.transform.parent.GetComponent<RectTransform>();
+        mainCamera = Camera.main;
+        AimImageMove();
 
         rightAction = playerInput.actions["R_Trigger"];
         leftAction = playerInput.actions["L_Trigger"];
@@ -74,9 +61,14 @@ public class RB_LB_GimmickSelect : MonoBehaviour
 
     private void Update()
     {
-        // ポーズ中は早期リターン
-        //if (isPause == true) { return; }
+        GimmickFreeRotation();
+    }
 
+    /// <summary>
+    /// 自由回転時の処理
+    /// </summary>
+    private void GimmickFreeRotation()
+    {
         is_R_Trigger_Pressed = rightAction.IsPressed();
         is_L_Trigger_Pressed = leftAction.IsPressed();
 
@@ -97,23 +89,9 @@ public class RB_LB_GimmickSelect : MonoBehaviour
     /// </summary>
     private void On_R_ShoulderButton(InputAction.CallbackContext context)
     {
-        // ポーズ中は早期リターン
-        //if (isPause == true){return;}
-
-        if (maxObjectNumber - 1 > objectNumber)
-        {
-            objectNumber++;
-        }
-        else
-        {
-            objectNumber = 0;
-        }
-
-        // 照準移動
-        Vector3 targetWorldPos = gimmicks[objectNumber].transform.position;
-        Vector3 targetScreenPos = mainCamera.WorldToScreenPoint(targetWorldPos);
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(aimRect, targetScreenPos, null, out var uiLocalPos);
-        aimImage.transform.localPosition = uiLocalPos;
+        if (maxObjectNumber - 1 > objectNumber) { objectNumber++; }
+        else { objectNumber = 0; }
+        AimImageMove();
     }
 
     /// <summary>
@@ -121,23 +99,9 @@ public class RB_LB_GimmickSelect : MonoBehaviour
     /// </summary>
     private void On_L_ShoulderButton(InputAction.CallbackContext context)
     {
-        // ポーズ中は早期リターン
-        //if (isPause == true) { return; }
-
-        if (objectNumber == 0)
-        {
-            objectNumber += maxObjectNumber - 1;
-        }
-        else
-        {
-            objectNumber--;
-        }
-
-        // 照準移動
-        Vector3 targetWorldPos = gimmicks[objectNumber].transform.position;
-        Vector3 targetScreenPos = mainCamera.WorldToScreenPoint(targetWorldPos);
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(aimRect, targetScreenPos, null, out var uiLocalPos);
-        aimImage.transform.localPosition = uiLocalPos;
+        if (objectNumber == 0) { objectNumber += maxObjectNumber - 1; }
+        else { objectNumber--; }
+        AimImageMove();
     }
 
     /// <summary>
@@ -145,11 +109,7 @@ public class RB_LB_GimmickSelect : MonoBehaviour
     /// </summary>
     private void On_R_TriggerButton(InputAction.CallbackContext context)
     {
-        // ポーズ中は早期リターン
-        //if (isPause == true) { return; }
-
-        fixedRotation = gimmicks[objectNumber].GetComponent<FixedRotation>();
-        if (fixedRotation)
+        if (gimmicks[objectNumber].transform.GetChild(0).TryGetComponent(out FixedRotation fixedRotation))
         {
             fixedRotation.RightRotate(true, true);
         }
@@ -160,21 +120,27 @@ public class RB_LB_GimmickSelect : MonoBehaviour
     /// </summary>
     private void On_L_TriggerButton(InputAction.CallbackContext context)
     {
-        // ポーズ中は早期リターン
-        //if (isPause == true) { return; }
-
-        //if(gimmicks[objectNumber].TryGetComponent(out FixedRotation fixedRotation))
-        //{
-        //    fixedRotation.LeftRotate(true, true);
-        //}
-
-        fixedRotation = gimmicks[objectNumber].GetComponent<FixedRotation>();
-        if (fixedRotation)
+        if (gimmicks[objectNumber].transform.GetChild(0).TryGetComponent(out FixedRotation fixedRotation))
         {
             fixedRotation.LeftRotate(true, true);
         }
     }
 
+    /// <summary>
+    /// 照準画像の移動処理
+    /// </summary>
+    private void AimImageMove()
+    {
+        Vector3 targetWorldPos = gimmicks[objectNumber].transform.position;
+        Vector3 targetScreenPos = mainCamera.WorldToScreenPoint(targetWorldPos);
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(aimRect, targetScreenPos, null, out var uiLocalPos);
+        aimImage.transform.localPosition = uiLocalPos;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="number"></param>
     private void CurrentObjectNumber(int number)
     {
         objectNumber = number;
