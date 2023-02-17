@@ -98,7 +98,7 @@ public class PlayerMove : MonoBehaviour
 
         // ƒWƒƒƒ“ƒvÀs
         if(ishit)
-            this.transform.DOMoveY(3f, 0.5f).SetEase(ease).SetRelative(true);
+            this.transform.DOMoveY(3f, 0.2f).SetEase(ease).SetRelative(true);
     }
 
     public void SetLocalGravity()
