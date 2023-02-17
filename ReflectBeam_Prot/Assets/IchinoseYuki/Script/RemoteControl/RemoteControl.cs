@@ -1,7 +1,6 @@
 // 作成日02/13日 製作者:市瀬
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Pause;
 
 /// <summary>
 /// リモコンスクリプト
@@ -31,7 +30,7 @@ public class RemoteControl : MonoBehaviour
     FreeRotation freeRotation;
     FixedRotation fixedRotation;
 
-    bool isPause = PauseManager.pause.Value;
+    //bool isPause = PauseManager.pause.Value;
 
     private void Start()
     {
@@ -63,10 +62,10 @@ public class RemoteControl : MonoBehaviour
 
     private void Update()
     {
-        if (isPause == true)
-        {
-            return;
-        }
+        //if (isPause == true)
+        //{
+        //    return;
+        //}
 
         // リフレクター配列の中身が空の時リターン
         if(refrecters.Length <= 0)
@@ -94,10 +93,10 @@ public class RemoteControl : MonoBehaviour
     /// </summary>
     private void On_R_ShoulderButton(InputAction.CallbackContext context)
     {
-        if(isPause == true)
-        {
-            return;
-        }
+        //if(isPause == true)
+        //{
+        //    return;
+        //}
 
         // リフレクター配列の中身が空の時リターン
         if (refrecters.Length <= 0)
@@ -128,10 +127,10 @@ public class RemoteControl : MonoBehaviour
     /// </summary>
     private void On_L_ShoulderButton(InputAction.CallbackContext context)
     {
-        if (isPause == true)
-        {
-            return;
-        }
+        //if (isPause == true)
+        //{
+        //    return;
+        //}
 
         // リフレクター配列の中身が空の時リターン
         if (refrecters.Length <= 0)
@@ -162,10 +161,10 @@ public class RemoteControl : MonoBehaviour
     /// </summary>
     private void On_R_TriggerButton(InputAction.CallbackContext context)
     {
-        if (isPause == true)
-        {
-            return;
-        }
+        //if (isPause == true)
+        //{
+        //    return;
+        //}
 
         // リフレクター配列の中身が空の時リターン
         if (refrecters.Length <= 0)
@@ -186,10 +185,10 @@ public class RemoteControl : MonoBehaviour
     /// </summary>
     private void On_L_TriggerButton(InputAction.CallbackContext context)
     {
-        if (isPause == true)
-        {
-            return;
-        }
+        //if (isPause == true)
+        //{
+        //    return;
+        //}
 
         // リフレクター配列の中身が空の時リターン
         if (refrecters.Length <= 0)

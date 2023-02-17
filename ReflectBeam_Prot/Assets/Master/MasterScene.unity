@@ -123,6 +123,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &104045792 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 698669091754292219, guid: c662b3d0a59041a4a9b1c48684b4d2ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 556901444}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &182031734
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,6 +231,12 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 954945216407781236, guid: ca13066c4423a514a81cba396ce9e5f4,
     type: 3}
   m_PrefabInstance: {fileID: 1918329132}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &203633033 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 698669091754292219, guid: c662b3d0a59041a4a9b1c48684b4d2ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 1963433050}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &216941008
 GameObject:
@@ -392,6 +404,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc179a364b5767a4aae698f4505fd450, type: 3}
+--- !u!1 &284290497 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 698669091754292219, guid: c662b3d0a59041a4a9b1c48684b4d2ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 1674532401}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &305699136
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,6 +551,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2062765500}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &445555046 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4661869927277521730, guid: b18f8e8901b7f684383e7f788cc3d369,
+    type: 3}
+  m_PrefabInstance: {fileID: 1578178210947047367}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9994cf939dcce74391460d1edd34886, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &467160473
 GameObject:
   m_ObjectHideFlags: 0
@@ -2069,6 +2099,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1674532401}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1867439933 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 698669091754292219, guid: c662b3d0a59041a4a9b1c48684b4d2ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 1597564563}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1918329132
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2526,6 +2562,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7282726535062614657}
     m_Modifications:
+    - target: {fileID: 4661869927277521789, guid: b18f8e8901b7f684383e7f788cc3d369,
+        type: 3}
+      propertyPath: m_Name
+      value: BeamDraw
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661869927523818690, guid: b18f8e8901b7f684383e7f788cc3d369,
+        type: 3}
+      propertyPath: beamDraw
+      value: 
+      objectReference: {fileID: 445555046}
     - target: {fileID: 4661869927523818745, guid: b18f8e8901b7f684383e7f788cc3d369,
         type: 3}
       propertyPath: m_Name
@@ -2664,22 +2710,22 @@ PrefabInstance:
         type: 3}
       propertyPath: refrecters.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 104045792}
     - target: {fileID: 4301958336183543002, guid: 7c0892ab4b913d143a3f2e65e9b22ad1,
         type: 3}
       propertyPath: refrecters.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1867439933}
     - target: {fileID: 4301958336183543002, guid: 7c0892ab4b913d143a3f2e65e9b22ad1,
         type: 3}
       propertyPath: refrecters.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 203633033}
     - target: {fileID: 4301958336183543002, guid: 7c0892ab4b913d143a3f2e65e9b22ad1,
         type: 3}
       propertyPath: refrecters.Array.data[3]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 284290497}
     - target: {fileID: 4301958336183543002, guid: 7c0892ab4b913d143a3f2e65e9b22ad1,
         type: 3}
       propertyPath: refrecters.Array.data[4]

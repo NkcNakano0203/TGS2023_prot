@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using DG.Tweening;
 using UniRx;
-using Pause;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -36,7 +35,7 @@ public class PlayerMove : MonoBehaviour
 
     void Start()
     {
-        PauseManager.pause.Subscribe(x => pause = x);
+        //PauseManager.pause.Subscribe(x => pause = x);
 
         rb = this.GetComponent<Rigidbody>();
       

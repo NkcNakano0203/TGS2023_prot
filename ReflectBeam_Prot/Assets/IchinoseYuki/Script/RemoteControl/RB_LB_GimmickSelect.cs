@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
 using System.Linq;
-using Pause;
 
 /// <summary>
 /// RBとLBでギミック選択をするスクリプト
@@ -29,7 +28,7 @@ public class RB_LB_GimmickSelect : MonoBehaviour,IObjectNumber
     private FreeRotation freeRotation;
     private FixedRotation fixedRotation;
 
-    bool isPause = PauseManager.pause.Value;
+    //bool isPause = PauseManager.pause.Value;
 
     // メインカメラ
     private Camera mainCamera;
@@ -75,7 +74,7 @@ public class RB_LB_GimmickSelect : MonoBehaviour,IObjectNumber
     private void Update()
     {
         // ポーズ中は早期リターン
-        if (isPause == true) { return; }
+        //if (isPause == true) { return; }
 
         is_R_Trigger_Pressed = rightAction.IsPressed();
         is_L_Trigger_Pressed = leftAction.IsPressed();
@@ -98,7 +97,7 @@ public class RB_LB_GimmickSelect : MonoBehaviour,IObjectNumber
     private void On_R_ShoulderButton(InputAction.CallbackContext context)
     {
         // ポーズ中は早期リターン
-        if (isPause == true){return;}
+        //if (isPause == true){return;}
 
         if (maxObjectNumber - 1 > objectNumber)
         {
@@ -123,7 +122,7 @@ public class RB_LB_GimmickSelect : MonoBehaviour,IObjectNumber
     private void On_L_ShoulderButton(InputAction.CallbackContext context)
     {
         // ポーズ中は早期リターン
-        if (isPause == true) { return; }
+        //if (isPause == true) { return; }
 
         if (objectNumber == 0)
         {
@@ -147,7 +146,7 @@ public class RB_LB_GimmickSelect : MonoBehaviour,IObjectNumber
     private void On_R_TriggerButton(InputAction.CallbackContext context)
     {
         // ポーズ中は早期リターン
-        if (isPause == true) { return; }
+        //if (isPause == true) { return; }
 
         fixedRotation = gimmicks[objectNumber].GetComponent<FixedRotation>();
         if (fixedRotation)
@@ -162,7 +161,7 @@ public class RB_LB_GimmickSelect : MonoBehaviour,IObjectNumber
     private void On_L_TriggerButton(InputAction.CallbackContext context)
     {
         // ポーズ中は早期リターン
-        if (isPause == true) { return; }
+        //if (isPause == true) { return; }
 
         //if(gimmicks[objectNumber].TryGetComponent(out FixedRotation fixedRotation))
         //{

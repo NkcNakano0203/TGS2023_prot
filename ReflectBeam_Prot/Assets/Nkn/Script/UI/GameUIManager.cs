@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Pause;
 using UniRx;
 
 public class GameUIManager : MonoBehaviour
@@ -21,11 +20,11 @@ public class GameUIManager : MonoBehaviour
     {
         if (!context.ReadValueAsButton()) return;
 
-        PauseManager.pause.Value = !PauseManager.pause.Value;
+        //PauseManager.pause.Value = !PauseManager.pause.Value;
     }
 
     private void Update()
     {
-        PauseManager.pause.Subscribe(x => UIPanel.SetActive(x));
+        //PauseManager.pause.Subscribe(x => UIPanel.SetActive(x));
     }
 }

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Pause;
 
 public class BackUI : MonoBehaviour,IButton
 {
@@ -15,6 +14,6 @@ public class BackUI : MonoBehaviour,IButton
     }
     public void Click()
     {
-        PauseManager.pause.Value = false;
+        //PauseManager.pause.Value = false;
     }
 }

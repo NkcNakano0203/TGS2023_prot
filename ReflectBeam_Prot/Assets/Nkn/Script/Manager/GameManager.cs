@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
-using Pause;
 
 public class GameManager : MonoBehaviour
 {
@@ -50,7 +49,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        PauseManager.pause.Subscribe(x => pause = x);
+        //PauseManager.pause.Subscribe(x => pause = x);
         // ステージクリアイベント
         player.GetGoal.Where(x => x).Subscribe(x => clear.Value = true);
         // プレイヤーのミスイベント
