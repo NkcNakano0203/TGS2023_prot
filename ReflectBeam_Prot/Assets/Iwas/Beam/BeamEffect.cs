@@ -58,7 +58,11 @@ public class BeamEffect : MonoBehaviour
         {
             lastHitReflector = hit.collider.gameObject;
             rayRecevier.RayEnter(hit.point,direction);
-        }        
+        }    
+        if(hit.collider.gameObject.TryGetComponent(out PlayerMove playerMove))
+        {
+            playerMove.PlayerDeath();
+        }
 
 
         if (hit.point == lastHitPoint)
