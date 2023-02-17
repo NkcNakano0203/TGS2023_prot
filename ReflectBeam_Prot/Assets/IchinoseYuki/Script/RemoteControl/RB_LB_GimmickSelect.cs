@@ -10,11 +10,12 @@ using System.Linq;
 [RequireComponent(typeof(GimmickList))]
 [RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(RightStick_GimmickSelection))]
-public class RB_LB_GimmickSelect : MonoBehaviour,IObjectNumber
+public class RB_LB_GimmickSelect : MonoBehaviour
 {
     // ギミックを保管する配列
     private GameObject[] gimmicks;
     private GimmickList gimmickList;
+
 
     // オブジェクトの順番
     private int objectNumber;
@@ -50,14 +51,14 @@ public class RB_LB_GimmickSelect : MonoBehaviour,IObjectNumber
         // ギミック取得
         gimmicks = gimmickList.gimmickLists;
 
+        RightStick_GimmickSelection rightStick_GimmickSelection = GetComponent<RightStick_GimmickSelection>();
+        rightStick_GimmickSelection.currentObjectNumber += CurrentObjectNumber;
+
         // デリゲート登録
-        playerInput.actions["R_Shoulder"].performed += On_R_ShoulderButton;
-        playerInput.actions["L_Shoulder"].performed += On_L_ShoulderButton;
+        playerInput.actions["L_Shoulder"].performed += On_R_ShoulderButton;
+        playerInput.actions["R_Shoulder"].performed += On_L_ShoulderButton;
         playerInput.actions["R_Trigger"].started += On_R_TriggerButton;
         playerInput.actions["L_Trigger"].started += On_L_TriggerButton;
-
-        // objectNumber初期化
-        objectNumber = 0;
 
         // 最大順番数を代入
         maxObjectNumber = gimmicks.Length;
@@ -99,6 +100,8 @@ public class RB_LB_GimmickSelect : MonoBehaviour,IObjectNumber
         // ポーズ中は早期リターン
         //if (isPause == true){return;}
 
+        Debug.Log("R1が押されたよ!");
+
         if (maxObjectNumber - 1 > objectNumber)
         {
             objectNumber++;
@@ -107,13 +110,12 @@ public class RB_LB_GimmickSelect : MonoBehaviour,IObjectNumber
         {
             objectNumber = 0;
         }
-        Debug.Log(objectNumber);
+
         // 照準移動
         Vector3 targetWorldPos = gimmicks[objectNumber].transform.position;
         Vector3 targetScreenPos = mainCamera.WorldToScreenPoint(targetWorldPos);
         RectTransformUtility.ScreenPointToLocalPointInRectangle(aimRect, targetScreenPos, null, out var uiLocalPos);
         aimImage.transform.localPosition = uiLocalPos;
-        ObjectNumber(objectNumber);
     }
 
     /// <summary>
@@ -124,6 +126,8 @@ public class RB_LB_GimmickSelect : MonoBehaviour,IObjectNumber
         // ポーズ中は早期リターン
         //if (isPause == true) { return; }
 
+        Debug.Log(objectNumber);
+
         if (objectNumber == 0)
         {
             objectNumber += maxObjectNumber - 1;
@@ -132,12 +136,12 @@ public class RB_LB_GimmickSelect : MonoBehaviour,IObjectNumber
         {
             objectNumber--;
         }
+
         // 照準移動
         Vector3 targetWorldPos = gimmicks[objectNumber].transform.position;
         Vector3 targetScreenPos = mainCamera.WorldToScreenPoint(targetWorldPos);
         RectTransformUtility.ScreenPointToLocalPointInRectangle(aimRect, targetScreenPos, null, out var uiLocalPos);
         aimImage.transform.localPosition = uiLocalPos;
-        ObjectNumber(objectNumber);
     }
 
     /// <summary>
@@ -175,9 +179,8 @@ public class RB_LB_GimmickSelect : MonoBehaviour,IObjectNumber
         }
     }
 
-    public int ObjectNumber(int number)
+    private void CurrentObjectNumber(int number)
     {
         objectNumber = number;
-        return objectNumber;
     }
 }

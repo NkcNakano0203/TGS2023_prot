@@ -12,7 +12,7 @@ using Cysharp.Threading.Tasks;
 [RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(GimmickList))]
 [RequireComponent(typeof(RB_LB_GimmickSelect))]
-public class RightStick_GimmickSelection : MonoBehaviour,IObjectNumber
+public class RightStick_GimmickSelection : MonoBehaviour
 {
     // ギミックを保管する配列
     private GameObject[] gimmicks;
@@ -22,7 +22,6 @@ public class RightStick_GimmickSelection : MonoBehaviour,IObjectNumber
     private int objectNumber;
 
     // 現在選択中のギミック
-    [SerializeField]
     private GameObject currentSelectGimmick;
 
     // 角度を保存するリスト
@@ -35,7 +34,6 @@ public class RightStick_GimmickSelection : MonoBehaviour,IObjectNumber
     //private GameObject temporaryGimick;
 
     // 最小の角度を保存する変数
-    [SerializeField]
     private float minAngle;
     // 右スティックの入力ベクトルを保存する変数
     private Vector2 rightStickValue;
@@ -49,6 +47,8 @@ public class RightStick_GimmickSelection : MonoBehaviour,IObjectNumber
     private GameObject aimImage;
     private RectTransform aimRect;
     private PlayerInput playerInput;
+
+    public event Action<int> currentObjectNumber;
 
     private void Start()
     {
@@ -65,6 +65,8 @@ public class RightStick_GimmickSelection : MonoBehaviour,IObjectNumber
 
         // デリゲート登録
         playerInput.onActionTriggered += RightStickDegree;
+        // 初期化
+        currentObjectNumber?.Invoke(0);
 
         // 照準移動
         var targetWorldPos = gimmicks[0].transform.position;
@@ -143,8 +145,13 @@ public class RightStick_GimmickSelection : MonoBehaviour,IObjectNumber
         minAngle = angles.Min();
         // 最小角度が何番目のオブジェクトか調べて一時保存変数に入れる
         currentSelectGimmick = gimmickObjects[angles.IndexOf(minAngle)];
-        objectNumber = angles.IndexOf(minAngle);
-        ObjectNumber(objectNumber);
+        //objectNumber = angles.IndexOf(minAngle);
+
+        List<GameObject> obj = gimmicks.ToList();
+        objectNumber = obj.IndexOf(currentSelectGimmick);
+        Debug.Log(objectNumber);
+
+        currentObjectNumber?.Invoke(objectNumber);
 
 
         var targetWorldPos = currentSelectGimmick.transform.position;
@@ -162,11 +169,5 @@ public class RightStick_GimmickSelection : MonoBehaviour,IObjectNumber
         await UniTask.Delay(TimeSpan.FromSeconds(0.2f));
         // 選択できるようにする
         isSelect = true;
-    }
-
-    public int ObjectNumber(int number)
-    {
-        objectNumber = number;
-        return objectNumber;
     }
 }
