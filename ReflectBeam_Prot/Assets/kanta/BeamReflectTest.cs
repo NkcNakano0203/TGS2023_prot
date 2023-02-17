@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BeamReflectTest : MonoBehaviour,IRayRecevier
+public class BeamReflectTest : MonoBehaviour, IRayRecevier
 {
-    
+
     BeamShot beamShot;
     Vector3 dir;
     Vector3 shotPos;
-    bool hit=false;
+    bool hit = false;
 
     public LastHit RayEnter(Vector3 rayVec, Vector3 rayPos)
     {
@@ -19,11 +19,11 @@ public class BeamReflectTest : MonoBehaviour,IRayRecevier
         {
             if (Vector3.Dot(transform.right, -dir) > 0)
             {
-               // beamShot.RayShot(shotPos, Vector3.Reflect(dir, transform.right));
+                // beamShot.RayShot(shotPos, Vector3.Reflect(dir, transform.right));
             }
             else if (Vector3.Dot(transform.right, -dir) < 0)
             {
-               // beamShot.RayShot(shotPos, Vector3.Reflect(dir, -transform.right));
+                // beamShot.RayShot(shotPos, Vector3.Reflect(dir, -transform.right));
             }
             hit = false;
         }
@@ -42,9 +42,9 @@ public class BeamReflectTest : MonoBehaviour,IRayRecevier
     // Update is called once per frame
     void Update()
     {
-       
+
     }
 
-    
-    
+
+
 }

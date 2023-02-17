@@ -2,23 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Switch : MonoBehaviour,IRayRecevier
+public class Switch : MonoBehaviour, IRayRecevier2
 {
-    
-    bool beamHit = false;
-    public LastHit RayEnter(Vector3 rayVec, Vector3 rayPos)
-    {        
-        beamHit = true;
-        return new LastHit(this.gameObject.gameObject);
+    [SerializeField]
+    Goal goal;
+
+    public void RayEnter(Vector3 hitpos, Vector3 rayVec)
+    {
+        Debug.Log("open", gameObject);
+        goal.Open();
     }
-    
-
-
     public void RayExit()
     {
-         beamHit = false;          
-    } 
+        Debug.Log("close", gameObject);
+        goal.Close();
+    }
 
-    
-    public bool GetBeamHit() { return beamHit; }
 }

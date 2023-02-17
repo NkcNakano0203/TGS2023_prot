@@ -16,7 +16,7 @@ public class BeamRaycast : MonoBehaviour
             return;
 
         // レイが当たったゲームオブジェクトがIRayRecevierを持っていたら
-        if (!hit.collider.gameObject.TryGetComponent(out IRayRecevier rayRecevier))
+        if (!hit.collider.gameObject.TryGetComponent(out IRayRecevier2 rayRecevier))
             return;
         //Debug.Log(hit.point);
 

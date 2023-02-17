@@ -110,3 +110,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0b5032bac5185a45bc37d5f1ff38ada, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OpenMat: {fileID: 2100000, guid: 3aef0f630e3f21d459acb3ac81b82518, type: 2}
+  closeMat: {fileID: 2100000, guid: 3d4334520e91768489af31fdc13d6120, type: 2}

@@ -4,15 +4,34 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    bool isOpen = false;
+    BoxCollider boxCollider;
+    MeshRenderer meshRenderer;
+
+    [SerializeField]
+    Material OpenMat;
+    [SerializeField]
+    Material closeMat;
+
+    private void Start()
     {
-        
+        boxCollider = GetComponent<BoxCollider>();
+        meshRenderer = GetComponent<MeshRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        boxCollider.enabled = isOpen;
+        meshRenderer.material = isOpen ? OpenMat : closeMat;
+    }
+
+    public void Open()
+    {
+        isOpen = true;
+    }
+
+    public void Close()
+    {
+        isOpen = false;
     }
 }

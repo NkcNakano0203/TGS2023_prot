@@ -141,7 +141,7 @@ public class RemoteControl : MonoBehaviour
         //Debug.Log("L1ƒ{ƒ^ƒ“" + context.ReadValueAsButton());
         bool isButtonDown = context.ReadValueAsButton();
 
-        refrecters[objectNumber].GetComponent<MeshRenderer>().material = white;
+        //refrecters[objectNumber].GetComponent<MeshRenderer>().material = white;
 
         if (objectNumber == 0)
         {

@@ -20,7 +20,7 @@ public class BeamShot : MonoBehaviour
         Debug.Log(lastHit.lastHitObj);
         if (hitObj != lastHit.lastHitObj)
         {
-            if (hitObj.TryGetComponent(out IRayRecevier rayRecevier))
+            if (hitObj.TryGetComponent(out IRayRecevier2 rayRecevier))
             {
                 rayRecevier.RayExit();
             }
@@ -57,7 +57,7 @@ public class BeamShot : MonoBehaviour
             }
 
             //”½ŽË•¨‚É“–‚½‚Á‚½Žž
-            if (item.collider.gameObject.TryGetComponent(out IRayRecevier irayRecevier))
+            if (item.collider.gameObject.TryGetComponent(out IRayRecevier2 irayRecevier))
             {
                 hitObj = item.collider.gameObject;
                 irayRecevier.RayEnter(direction, item.point);
