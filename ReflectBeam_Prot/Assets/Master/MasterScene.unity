@@ -1606,7 +1606,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: FreeReflector
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8002724342531066954, guid: 533563c4662982348b4696abcdcff08d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 533563c4662982348b4696abcdcff08d, type: 3}
 --- !u!4 &959145007 stripped
 Transform:
@@ -1620,6 +1621,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 959145006}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &959145010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959145008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 442937c07d15f57458aac845e5e91c83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: 0.5
 --- !u!1 &1049263946 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6161047769051929623, guid: 533563c4662982348b4696abcdcff08d,
@@ -1999,6 +2013,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2970552508112418747, guid: 7c0892ab4b913d143a3f2e65e9b22ad1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3683013708575923212, guid: 7c0892ab4b913d143a3f2e65e9b22ad1,
         type: 3}
       propertyPath: m_RootOrder
@@ -2084,6 +2103,11 @@ PrefabInstance:
       propertyPath: refrecters.Array.data[4]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6659058937712443293, guid: 7c0892ab4b913d143a3f2e65e9b22ad1,
+        type: 3}
+      propertyPath: m_Name
+      value: aimImageCanvas
+      objectReference: {fileID: 0}
     - target: {fileID: 7129210673594722719, guid: 7c0892ab4b913d143a3f2e65e9b22ad1,
         type: 3}
       propertyPath: ease
@@ -2096,6 +2120,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4301958336183543002, guid: 7c0892ab4b913d143a3f2e65e9b22ad1, type: 3}
+    - {fileID: 673859269887486833, guid: 7c0892ab4b913d143a3f2e65e9b22ad1, type: 3}
+    - {fileID: 6115601228425296830, guid: 7c0892ab4b913d143a3f2e65e9b22ad1, type: 3}
+    - {fileID: 6419231200458613089, guid: 7c0892ab4b913d143a3f2e65e9b22ad1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7c0892ab4b913d143a3f2e65e9b22ad1, type: 3}
 --- !u!114 &1344102376 stripped
 MonoBehaviour:
