@@ -35,6 +35,8 @@ public class RightStick_GimmickSelection : MonoBehaviour
     private Camera mainCamera;
     private PlayerInput playerInput;
 
+    private Transform currentSelectObjectTransform;
+
     public event Action<int> CurrentObjectNumber;
 
     private void Start()
@@ -53,11 +55,10 @@ public class RightStick_GimmickSelection : MonoBehaviour
         // デリゲート登録
         playerInput.onActionTriggered += RightStickDegree;
 
-        AimImageMove();
-
         // 現在選択中のギミックの初期化
         currentSelectGimmick = gimmicks[0];
         CurrentObjectNumber?.Invoke(0);
+        currentSelectObjectTransform = gimmicks[currentSelectObjectNumber].transform.GetChild(0).transform;
     }
 
     /// <summary>
@@ -113,8 +114,11 @@ public class RightStick_GimmickSelection : MonoBehaviour
         List<GameObject> obj = gimmicks.ToList();
         currentSelectObjectNumber = obj.IndexOf(currentSelectGimmick);
         CurrentObjectNumber?.Invoke(currentSelectObjectNumber);
+        currentSelectObjectTransform = gimmicks[currentSelectObjectNumber].transform.GetChild(0).transform;
 
         AimImageMove();
+        AimImageSizeChange();
+        AimImageRotation();
 
         // 待機する
         await UniTask.Delay(TimeSpan.FromSeconds(0.2f));
@@ -131,5 +135,22 @@ public class RightStick_GimmickSelection : MonoBehaviour
         Vector3 targetScreenPos = mainCamera.WorldToScreenPoint(targetWorldPos);
         RectTransformUtility.ScreenPointToLocalPointInRectangle(aimRect, targetScreenPos, null, out var uiLocalPos);
         aimImageTransform.localPosition = uiLocalPos;
+    }
+
+    /// <summary>
+    /// 照準画像のサイズ変更メソッド
+    /// </summary>
+    private void AimImageSizeChange()
+    {
+        Vector3 targetLocalScale = currentSelectObjectTransform.localScale;
+        aimImageTransform.localScale = targetLocalScale * 1.1f;
+    }
+
+    /// <summary>
+    /// 照準画像の回転メソッド
+    /// </summary>
+    private void AimImageRotation()
+    {
+        aimImageTransform.rotation = currentSelectObjectTransform.rotation;
     }
 }

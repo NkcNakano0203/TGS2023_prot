@@ -13,10 +13,12 @@ public class RB_LB_GimmickSelect : MonoBehaviour
     // ギミックを保管する配列
     private GameObject[] gimmicks;
     private GimmickList gimmickList;
-    // 現在選択中のギミックの番号
+    // 選択中のギミックの番号
     private int currentSelectObjectNumber;
     // 最大オブジェクト数
     private int maxObjectNumber;
+
+    private Transform currentSelectObjectTransform;
 
     private bool is_R_Trigger_Pressed;
     private bool is_L_Trigger_Pressed;
@@ -48,7 +50,10 @@ public class RB_LB_GimmickSelect : MonoBehaviour
         aimImageTransform = transform.Find("aimImageCanvas/aimImage").gameObject.transform;
         aimRect = aimImageTransform.parent.GetComponent<RectTransform>();
         mainCamera = Camera.main;
+        currentSelectObjectTransform = gimmicks[currentSelectObjectNumber].transform.GetChild(0).transform;
         AimImageMove();
+        AimImageSizeChange();
+        AimImageRotation();
 
         rightAction = playerInput.actions["R_Trigger"];
         leftAction = playerInput.actions["L_Trigger"];
@@ -75,6 +80,7 @@ public class RB_LB_GimmickSelect : MonoBehaviour
             {
                 freeRotation.RightRotate(is_L_Trigger_Pressed, is_R_Trigger_Pressed);
                 freeRotation.LeftRotate(is_L_Trigger_Pressed, is_R_Trigger_Pressed);
+                AimImageRotation();
             }
         }
     }
@@ -86,7 +92,11 @@ public class RB_LB_GimmickSelect : MonoBehaviour
     {
         if (maxObjectNumber - 1 > currentSelectObjectNumber) { currentSelectObjectNumber++; }
         else { currentSelectObjectNumber = 0; }
+
+        currentSelectObjectTransform = gimmicks[currentSelectObjectNumber].transform.GetChild(0).transform;
         AimImageMove();
+        AimImageSizeChange();
+        AimImageRotation();
     }
 
     /// <summary>
@@ -96,7 +106,11 @@ public class RB_LB_GimmickSelect : MonoBehaviour
     {
         if (currentSelectObjectNumber == 0) { currentSelectObjectNumber += maxObjectNumber - 1; }
         else { currentSelectObjectNumber--; }
+
+        currentSelectObjectTransform = gimmicks[currentSelectObjectNumber].transform.GetChild(0).transform;
         AimImageMove();
+        AimImageSizeChange();
+        AimImageRotation();
     }
 
     /// <summary>
@@ -104,6 +118,7 @@ public class RB_LB_GimmickSelect : MonoBehaviour
     /// </summary>
     private void On_R_TriggerButton(InputAction.CallbackContext context)
     {
+        currentSelectObjectTransform = gimmicks[currentSelectObjectNumber].transform.GetChild(0).transform;
         if (gimmicks[currentSelectObjectNumber].transform.GetChild(0).TryGetComponent(out FixedRotation fixedRotation))
         {
             fixedRotation.RightRotate(true, true);
@@ -115,6 +130,7 @@ public class RB_LB_GimmickSelect : MonoBehaviour
     /// </summary>
     private void On_L_TriggerButton(InputAction.CallbackContext context)
     {
+        currentSelectObjectTransform = gimmicks[currentSelectObjectNumber].transform.GetChild(0).transform;
         if (gimmicks[currentSelectObjectNumber].transform.GetChild(0).TryGetComponent(out FixedRotation fixedRotation))
         {
             fixedRotation.LeftRotate(true, true);
@@ -122,14 +138,31 @@ public class RB_LB_GimmickSelect : MonoBehaviour
     }
 
     /// <summary>
-    /// 照準画像の移動処理
+    /// 照準画像の移動メソッド
     /// </summary>
     private void AimImageMove()
     {
-        Vector3 targetWorldPos = gimmicks[currentSelectObjectNumber].transform.position;
+        Vector3 targetWorldPos = currentSelectObjectTransform.position;
         Vector3 targetScreenPos = mainCamera.WorldToScreenPoint(targetWorldPos);
         RectTransformUtility.ScreenPointToLocalPointInRectangle(aimRect, targetScreenPos, null, out var uiLocalPos);
         aimImageTransform.localPosition = uiLocalPos;
+    }
+
+    /// <summary>
+    /// 照準画像のサイズ変更メソッド
+    /// </summary>
+    private void AimImageSizeChange()
+    {
+        Vector3 targetLocalScale = currentSelectObjectTransform.localScale;
+        aimImageTransform.localScale = targetLocalScale * 1.1f;
+    }
+
+    /// <summary>
+    /// 照準画像の回転メソッド
+    /// </summary>
+    private void AimImageRotation()
+    {
+        aimImageTransform.rotation = currentSelectObjectTransform.rotation;
     }
 
     /// <summary>
@@ -138,5 +171,14 @@ public class RB_LB_GimmickSelect : MonoBehaviour
     private void CurrentObjectNumber(int number)
     {
         currentSelectObjectNumber = number;
+    }
+
+    private void OnDestroy()
+    {
+        // 解除してあげないとシーンロードした分Missingエラーが出る
+        playerInput.actions["L_Shoulder"].performed -= On_R_ShoulderButton;
+        playerInput.actions["R_Shoulder"].performed -= On_L_ShoulderButton;
+        playerInput.actions["R_Trigger"].started -= On_R_TriggerButton;
+        playerInput.actions["L_Trigger"].started -= On_L_TriggerButton;
     }
 }
