@@ -10,7 +10,8 @@ public class PlayerMove : MonoBehaviour
     
     // playerスピード
     private Vector3 player_velocity;
-    float speed = 6f; 
+    float speed = 6f;
+    public Vector3 jumpForce = new Vector3(0, 6, 0);//ジャンプ力
 
     bool isJump = false;
 
@@ -53,21 +54,17 @@ public class PlayerMove : MonoBehaviour
         if (pause) return;
 
         // プレイヤー移動
-        rb.velocity = new Vector3(player_velocity.x * speed, 0, 0);
+        rb.velocity = new Vector3(player_velocity.x * speed, rb.velocity.y,0);
 
         // groundLayersに当たっていたらtrueに
         ishit = Physics.CheckBox(transform.position,Vector3.one * 0.9f,Quaternion.identity,groundLayers);
+    
+        if (ishit && isJump)
+            rb.AddForce(jumpForce, ForceMode.Impulse);
 
         if (ishit)
             isJump = false;
-        else
-            isJump = true;
 
-
-        // 重力を加えるメソッドを呼ぶ
-        if (isJump)
-                SetLocalGravity();
-        
     }
 
     // 移動
@@ -95,17 +92,17 @@ public class PlayerMove : MonoBehaviour
         if (context.action.name != "Jump")
             return;
 
-        // ジャンプ実行
-        if(ishit)
-            this.transform.DOMoveY(3f, 0.2f).SetEase(ease).SetRelative(true);
+  
+
+      
     }
 
-    public void SetLocalGravity()
-    {
-        //　重力を加える
-        rb.AddForce(localGravity, ForceMode.Acceleration);
+    //public void SetLocalGravity()
+    //{
+    //    //　重力を加える
+    //    rb.AddForce(localGravity, ForceMode.Acceleration);
 
-    }
+    //}
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent<Star>(out _))
