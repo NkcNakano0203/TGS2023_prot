@@ -18,14 +18,6 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] Ease ease;
 
-    RectTransform rectTransform;
-
-    private void Awake()
-    {
-        rectTransform = GetComponent<RectTransform>();
-        rectTransform.anchoredPosition = new Vector3(0, 700, 0);
-    }
-
     void Start()
     {
         gm.ClearProp.Where(x => x).Subscribe(x => OnClear());
