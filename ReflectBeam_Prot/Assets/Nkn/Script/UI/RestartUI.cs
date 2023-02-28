@@ -16,6 +16,6 @@ public class RestartUI : MonoBehaviour, IButton
 
     public void Click() 
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
     }
 }

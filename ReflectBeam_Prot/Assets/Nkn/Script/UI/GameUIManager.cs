@@ -14,12 +14,13 @@ public class GameUIManager : MonoBehaviour
     private void Start()
     {
         playerInput.actions["Pause"].performed += OnTogglePause;
+        UIPanel.gameObject.SetActive(false);
     }
 
     void OnTogglePause(InputAction.CallbackContext context)
     {
         if (!context.ReadValueAsButton()) return;
-
+        UIPanel.gameObject.SetActive(!UIPanel.gameObject.activeSelf);
         //PauseManager.pause.Value = !PauseManager.pause.Value;
     }
 
