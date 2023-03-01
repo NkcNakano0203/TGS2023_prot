@@ -9,12 +9,12 @@ public class Switch : MonoBehaviour, IRayRecevier2
 
     public void RayEnter(Vector3 hitpos, Vector3 rayVec)
     {
-        Debug.Log("open", gameObject);
+        //Debug.Log("open", gameObject);
         goal.Open();
     }
     public void RayExit()
     {
-        Debug.Log("close", gameObject);
+        //Debug.Log("close", gameObject);
         goal.Close();
     }
 

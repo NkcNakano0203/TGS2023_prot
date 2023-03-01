@@ -5,7 +5,7 @@ using UnityEngine;
 public class Goal : MonoBehaviour
 {
     bool isOpen = false;
-    BoxCollider boxCollider;
+    CapsuleCollider capsuleCollider;
     MeshRenderer meshRenderer;
 
     [SerializeField]
@@ -15,13 +15,13 @@ public class Goal : MonoBehaviour
 
     private void Start()
     {
-        boxCollider = GetComponent<BoxCollider>();
+        capsuleCollider = GetComponent<CapsuleCollider>();
         meshRenderer = GetComponent<MeshRenderer>();
     }
 
     void Update()
     {
-        boxCollider.enabled = isOpen;
+        capsuleCollider.enabled = isOpen;
         meshRenderer.material = isOpen ? OpenMat : closeMat;
     }
 
