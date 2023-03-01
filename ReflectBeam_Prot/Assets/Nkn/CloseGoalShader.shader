@@ -16,7 +16,7 @@ Shader "Custom/GoalEffectShader"
 
         Pass
         {
-            Cull Front
+            Cull Off
             Name "ForwardLit"
             Tags { "LightMode"="UniversalForward" }
 
@@ -61,13 +61,9 @@ Shader "Custom/GoalEffectShader"
 
             float4 frag (v2f i) : SV_Target
             {
-                i.uv.y += _ScrollSpeed * -_Time;
-                // sample the texture
-                float4 col = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.uv);
-                col *= _EmissionColor;
-                // apply fog
-                col.rgb = MixFog(col.rgb, i.fogFactor);
-                return col;
+                fixed4 col = tex2D(_MainTex, i.uv);
+                col = fixed4(0, 0, 0, 0) ;
+                return col;            
             }
             ENDHLSL
         }

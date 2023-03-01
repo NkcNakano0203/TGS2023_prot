@@ -5,24 +5,19 @@ using UnityEngine;
 public class Goal : MonoBehaviour
 {
     bool isOpen = false;
-    CapsuleCollider capsuleCollider;
+    BoxCollider boxCollider;
+    [SerializeField]
     MeshRenderer meshRenderer;
-
-    [SerializeField]
-    Material OpenMat;
-    [SerializeField]
-    Material closeMat;
 
     private void Start()
     {
-        capsuleCollider = GetComponent<CapsuleCollider>();
-        meshRenderer = GetComponent<MeshRenderer>();
+        boxCollider = GetComponent<BoxCollider>();
     }
 
     void Update()
     {
-        capsuleCollider.enabled = isOpen;
-        meshRenderer.material = isOpen ? OpenMat : closeMat;
+        boxCollider.enabled = isOpen;
+        meshRenderer.enabled = isOpen;
     }
 
     public void Open()
