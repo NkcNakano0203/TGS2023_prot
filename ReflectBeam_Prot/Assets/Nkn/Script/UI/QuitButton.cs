@@ -6,9 +6,6 @@ using UnityEngine.UI;
 
 public class QuitButton : MonoBehaviour, IButton
 {
-    [SerializeField]
-    GameUIManager GameUIManager;
-
     Button button;
 
     private void Start()
@@ -18,6 +15,6 @@ public class QuitButton : MonoBehaviour, IButton
     }
     public void Click()
     {
-        SceneManager.LoadScene("TitleScene");
+        SceneManager.LoadScene("Title");
     }
 }

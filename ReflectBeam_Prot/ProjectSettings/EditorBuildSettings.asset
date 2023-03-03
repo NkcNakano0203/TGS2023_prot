@@ -5,10 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/kanta/Title.unity
+    guid: d0ae3ae80b48e1c44ba9c7267cb48e14
   - enabled: 1
     path: Assets/Master/MasterScene.unity
     guid: a10e58f060342c140a765e1e86dbf489
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

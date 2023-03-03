@@ -5,18 +5,18 @@ using UnityEngine;
 public class Goal : MonoBehaviour
 {
     bool isOpen = false;
-    BoxCollider boxCollider;
+    CapsuleCollider capsuleCollider;
     [SerializeField]
     MeshRenderer meshRenderer;
 
     private void Start()
     {
-        boxCollider = GetComponent<BoxCollider>();
+        capsuleCollider = GetComponent<CapsuleCollider>();
     }
 
     void Update()
     {
-        boxCollider.enabled = isOpen;
+        capsuleCollider.enabled = isOpen;
         meshRenderer.enabled = isOpen;
     }
 
