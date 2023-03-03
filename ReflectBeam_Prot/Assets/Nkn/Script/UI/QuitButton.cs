@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class BackUI : MonoBehaviour,IButton
+public class QuitButton : MonoBehaviour, IButton
 {
     [SerializeField]
     GameUIManager GameUIManager;
@@ -17,6 +18,6 @@ public class BackUI : MonoBehaviour,IButton
     }
     public void Click()
     {
-        GameUIManager.ToggleActive();
+        SceneManager.LoadScene("TitleScene");
     }
 }

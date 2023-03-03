@@ -21,11 +21,10 @@ public class GameUIManager : MonoBehaviour
     {
         if (!context.ReadValueAsButton()) return;
         UIPanel.gameObject.SetActive(!UIPanel.gameObject.activeSelf);
-        //PauseManager.pause.Value = !PauseManager.pause.Value;
     }
 
-    private void Update()
+    public void ToggleActive()
     {
-        //PauseManager.pause.Subscribe(x => UIPanel.SetActive(x));
+        UIPanel.gameObject.SetActive(!UIPanel.gameObject.activeSelf);
     }
 }
