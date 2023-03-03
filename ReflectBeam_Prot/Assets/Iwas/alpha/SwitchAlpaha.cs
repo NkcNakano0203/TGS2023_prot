@@ -10,8 +10,25 @@ public class SwitchAlpaha : MonoBehaviour, IRayReceiverAlpha
 
     bool isHit = false;
 
+    // switch‚ª‹N“®‚·‚é‚Ü‚Å‚ÌŽžŠÔ
+    float toStart = 0;
+
+    //[SerializeField]
+    //GameObject obj1;
+
     public void RayEnter(Laser laser)
     {
+
+        if (isHit)
+        {
+            toStart = 0;
+            return;
+        }
+
+        toStart += Time.deltaTime;
+
+        
+
         if (isSetColor)
         {
             Hit(laser.GetColor());
@@ -50,4 +67,14 @@ public class SwitchAlpaha : MonoBehaviour, IRayReceiverAlpha
     }
 
     public bool GetIsHit() { return isHit; }
+
+    //public void Countdown(float toStart)
+    //{
+    //    if(toStart > 1)
+    //    {
+    //        obj1.GetComponent<MeshRenderer>().material.e
+    //    }
+
+    //}
+
 }
