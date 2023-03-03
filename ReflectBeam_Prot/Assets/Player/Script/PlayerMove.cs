@@ -11,14 +11,19 @@ public class PlayerMove : MonoBehaviour
     // playerスピード
     private Vector3 player_velocity;
     float speed = 6f;
-    public Vector3 jumpForce = new Vector3(0, 6, 0);//ジャンプ力
 
+    [SerializeField]
+    float jumpPower = 5f;
+
+    bool isMove = false;
     bool isJump = false;
+    bool isJumpAnim = false;
 
     [SerializeField] Ease ease;
 
-    [SerializeField] private Vector3 localGravity;
     Rigidbody rb;
+
+    Animator playerAnimator;
 
     //地面に向けてレイを飛ばす
     public LayerMask groundLayers;//地面だと認識するレイヤー
@@ -34,6 +39,13 @@ public class PlayerMove : MonoBehaviour
 
     bool pause;
 
+    enum Action
+    {
+        Idol,
+        RUN,
+        Die,
+    }
+
     void Start()
     {
         //PauseManager.pause.Subscribe(x => pause = x);
@@ -42,6 +54,12 @@ public class PlayerMove : MonoBehaviour
       
 
         PlayerInput playerInput = GetComponent<PlayerInput>();
+
+        // 子オブジェクトを取得
+        GameObject playerModel = transform.GetChild(0).gameObject;
+
+        // 子オブジェクトについているAnimatorを取得
+        playerAnimator = playerModel.GetComponent<Animator>();
 
         playerInput.actions["Move"].performed += OnMove;
         playerInput.actions["Move"].canceled += OnMove;
@@ -53,23 +71,37 @@ public class PlayerMove : MonoBehaviour
     {
         if (pause) return;
 
-        // プレイヤー移動
-        rb.velocity = new Vector3(player_velocity.x * speed, rb.velocity.y,0);
+        if (isMove && isJumpAnim == false)
+        {
+            // プレイヤー移動
+            rb.velocity = new Vector3(player_velocity.x * speed, rb.velocity.y, 0);
+            playerAnimator.SetInteger("Action",(int)Action.RUN);
+            playerAnimator.SetBool("Jump", false);
+        }
 
         // groundLayersに当たっていたらtrueに
         ishit = Physics.CheckBox(transform.position,Vector3.one * 0.9f,Quaternion.identity,groundLayers);
-    
-        if (ishit && isJump)
-            rb.AddForce(jumpForce, ForceMode.Impulse);
+
 
         if (ishit)
             isJump = false;
+
+        if (player_velocity == new Vector3(0, 0, 0))
+        {
+            isMove = false;
+            if (isMove == false)
+            {
+                playerAnimator.SetInteger("Action", (int)Action.Idol);
+                playerAnimator.SetBool("Jump", false);
+            }
+        }
 
     }
 
     // 移動
     public void OnMove(InputAction.CallbackContext context)
     {
+        isMove = true;
 
         // Move以外は処理しない
         if (context.action.name != "Move")
@@ -80,6 +112,16 @@ public class PlayerMove : MonoBehaviour
 
         // 移動速度を保持
         player_velocity = new Vector3(axis.x, 0, 0);
+
+        // プレイヤーの向き
+        if (axis.x > 0)
+        {
+            transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+        }
+        else if (axis.x < 0)
+        {
+            transform.rotation = Quaternion.Euler(0f, -90f, 0f);
+        }
 
     }
 
@@ -92,20 +134,18 @@ public class PlayerMove : MonoBehaviour
         if (context.action.name != "Jump")
             return;
 
-  
+        if (isJump)
+        {
+            rb.AddForce(transform.up * jumpPower, ForceMode.Impulse);
+            playerAnimator.SetBool("Jump", true);
+        }
 
-      
+        isJumpAnim = true;
     }
 
-    //public void SetLocalGravity()
-    //{
-    //    //　重力を加える
-    //    rb.AddForce(localGravity, ForceMode.Acceleration);
-
-    //}
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<Star>(out _))
+        if (other.TryGetComponent<GearRotation>(out _))
         {
             other.gameObject.SetActive(false);
             star.Value = true;
@@ -116,10 +156,21 @@ public class PlayerMove : MonoBehaviour
         }
        
     }
-    
+
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        if (ishit)
+        {
+            isJumpAnim = false;
+            isJump = false;
+        }
+    }
+
 
     public void PlayerDeath()
     {
+        playerAnimator.SetInteger("Action", (int)Action.Die);
         death.Value = true;
     }
 }
