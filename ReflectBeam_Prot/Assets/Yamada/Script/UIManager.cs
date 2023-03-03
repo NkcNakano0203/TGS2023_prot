@@ -10,13 +10,15 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] GameManager gm;
 
-    [SerializeField] TextMeshProUGUI itemCountText = null;
+    [SerializeField] Image item = null;
     [SerializeField] TextMeshProUGUI timeCountText = null;
     [SerializeField] TextMeshProUGUI restartCountText = null;
 
     [SerializeField] Image image;
 
     [SerializeField] Ease ease;
+
+    private Sprite sprite;
 
     void Start()
     {
@@ -30,7 +32,11 @@ public class UIManager : MonoBehaviour
 
     void OnClear()
     {
-        itemCountText.text = $"Item:{gm.starCount}";
+        sprite = Resources.Load<Sprite>("GearReal");
+        item = this.GetComponent<Image>();
+        item.sprite = sprite;
+
+
         timeCountText.text = $"クリアタイム {gm.gameTime}";
         restartCountText.text = $"リスタート回数 {gm.restartCount}";
 
