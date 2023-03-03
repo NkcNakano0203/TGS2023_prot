@@ -3,7 +3,12 @@ guid: a74e9f8024c8d1b449c83db7ff4b8d00
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GearMat
+    second: {fileID: 2100000, guid: 15cf6619dba229749b7f9dd1e862c0b9, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
