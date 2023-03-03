@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: GearMat
-    second: {fileID: 2100000, guid: 15cf6619dba229749b7f9dd1e862c0b9, type: 2}
+      name: MetalTex
+    second: {fileID: 2100000, guid: 4cf9c65fcd5caeb47b3848f1a9fec9d5, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: metal02
+    second: {fileID: 2800000, guid: aac10018181a94c4db4c86738f562040, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
