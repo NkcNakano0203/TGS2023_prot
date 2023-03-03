@@ -11,9 +11,12 @@ public class GameUIManager : MonoBehaviour
     [SerializeField]
     PlayerInput playerInput;
 
+    private void Awake()
+    {
+        playerInput.actions["Pause"].started += OnTogglePause;
+    }
     private void Start()
     {
-        playerInput.actions["Pause"].performed += OnTogglePause;
         UIPanel.gameObject.SetActive(false);
     }
 
