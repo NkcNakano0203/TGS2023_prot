@@ -18,6 +18,7 @@ public class PlayerMove : MonoBehaviour
 
     bool isMove = false;
     bool isJump = false;
+    bool isDeath = false;
     bool isJumpAnim = false;
 
     Rigidbody rb;
@@ -64,18 +65,28 @@ public class PlayerMove : MonoBehaviour
         playerInput.actions["Move"].canceled += OnMove;
         playerInput.actions["Jump"].performed += OnJump;
 
+        isDeath = false;
     }
 
     void Update()
     {
         if (pause) return;
 
-        if (isMove && isJumpAnim == false)
+        if (isMove)
         {
+            if(isDeath == true || goal.Value)
+            {
+                player_velocity = new Vector3(0, 0, 0);
+            }
+
             // プレイヤー移動
             rb.velocity = new Vector3(player_velocity.x * speed, rb.velocity.y, 0);
-            playerAnimator.SetInteger("Action",(int)Action.RUN);
-            playerAnimator.SetBool("Jump", false);
+
+            if (isJumpAnim == false)
+            {
+                playerAnimator.SetInteger("Action", (int)Action.RUN);
+                playerAnimator.SetBool("Jump", false);
+            }
         }
 
         // groundLayersに当たっていたらtrueに
@@ -96,7 +107,7 @@ public class PlayerMove : MonoBehaviour
         if (player_velocity == new Vector3(0, 0, 0))
         {
             isMove = false;
-            if (isMove == false)
+            if (isMove == false && isJumpAnim == false && isDeath == false)
             {
                 playerAnimator.SetInteger("Action", (int)Action.Idol);
                 playerAnimator.SetBool("Jump", false);
@@ -108,6 +119,8 @@ public class PlayerMove : MonoBehaviour
     // 移動
     public void OnMove(InputAction.CallbackContext context)
     {
+        if(isDeath == true || goal.Value) { return; }
+
         isMove = true;
 
         // Move以外は処理しない
@@ -135,6 +148,7 @@ public class PlayerMove : MonoBehaviour
     // ジャンプ
     public void OnJump(InputAction.CallbackContext context)
     {
+        if (isDeath == true || goal.Value) { return; }
 
         if (context.action.name != "Jump")
             return;
@@ -167,7 +181,6 @@ public class PlayerMove : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-
         if (ishit)
         {
             isJumpAnim = false;
@@ -178,7 +191,18 @@ public class PlayerMove : MonoBehaviour
 
     public void PlayerDeath()
     {
+        isDeath = true;
+
+        StartCoroutine("DeathTime");
+
+    }
+
+    IEnumerator DeathTime()
+    {
         playerAnimator.SetInteger("Action", (int)Action.Die);
+
+        yield return new WaitForSeconds(1.5f);
+
         death.Value = true;
     }
 }
