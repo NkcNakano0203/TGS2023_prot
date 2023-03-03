@@ -29,20 +29,20 @@ public class ButtonManager : MonoBehaviour
         //if (context.action.name != "RightStick" ) { return; }
 
         
-        Vector2 rightStickValue = context.ReadValue<Vector2>(); 
+        Vector2 rightStickValue = context.ReadValue<Vector2>();
 
         if (rightStickValue.y > 0.5f)
         {
             if (selectnum > 0)
                 selectnum--;
-        }       
+        }
         if (rightStickValue.y < -0.5f)
         {
-            if (selectnum < button.Length-1)
+            if (selectnum < button.Length - 1)
                 selectnum++;
         }
-        
-       
+
+
 
     }
     void Update()
