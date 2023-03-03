@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     private ReactiveProperty<bool> clear = new ReactiveProperty<bool>(false);
 
     /// <summary>
-    /// ゲーム内時間(フェードアウトが終わってから測り始めたい)
+    /// ゲーム内時間
     /// </summary>
     public float gameTime => timer;
     private float timer = 0;
@@ -36,7 +36,11 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         // ステージクリアイベント
-        player.GetGoal.Where(x => x).Subscribe(x => clear.Value = true);
+        player.GetGoal.Where(x => x).Subscribe(x =>
+        {
+            ClearTime(); 
+            clear.Value = true;
+        });
         // プレイヤーのミスイベント
         player.DeathProp.Where(x => x).Subscribe(x => SceneManager.LoadScene(SceneManager.GetActiveScene().name));
         // ステージ中の星獲得イベント
@@ -49,6 +53,10 @@ public class GameManager : MonoBehaviour
         timer += Time.deltaTime;
     }
 
+    void ClearTime()
+    {
+        timer = Mathf.Floor(timer);
+    }
 
     // 一時停止実装案
     //globalなイベントを作って
