@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] Ease ease;
 
-    private Sprite sprite;
+    [SerializeField] Sprite Itemsprite;
 
     void Start()
     {
@@ -32,9 +32,8 @@ public class UIManager : MonoBehaviour
 
     void OnClear()
     {
-        sprite = Resources.Load<Sprite>("GearReal");
         item = this.GetComponent<Image>();
-        item.sprite = sprite;
+        item.sprite = Itemsprite;
 
 
         timeCountText.text = $"クリアタイム {gm.gameTime}";

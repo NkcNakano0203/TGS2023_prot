@@ -512,6 +512,37 @@ PrefabInstance:
       propertyPath: item
       value: 
       objectReference: {fileID: 299534110637848847}
+    - target: {fileID: 1011935902258845554, guid: 5f0f7b0ee1d10ea4c9ce16afd156ab58,
+        type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1a005d22bbd83384ea68bdbadb5245bd,
+        type: 3}
+    - target: {fileID: 5244682168467100059, guid: 5f0f7b0ee1d10ea4c9ce16afd156ab58,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5244682168467100059, guid: 5f0f7b0ee1d10ea4c9ce16afd156ab58,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5375469118638687756, guid: 5f0f7b0ee1d10ea4c9ce16afd156ab58,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5375469118638687756, guid: 5f0f7b0ee1d10ea4c9ce16afd156ab58,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5594601277945976752, guid: 5f0f7b0ee1d10ea4c9ce16afd156ab58,
+        type: 3}
+      propertyPath: m_Name
+      value: ItemImage
+      objectReference: {fileID: 0}
     - target: {fileID: 6895482706117677326, guid: 5f0f7b0ee1d10ea4c9ce16afd156ab58,
         type: 3}
       propertyPath: m_Name
