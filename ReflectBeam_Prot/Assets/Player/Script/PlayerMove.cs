@@ -14,12 +14,11 @@ public class PlayerMove : MonoBehaviour
 
     [SerializeField]
     float jumpPower = 5f;
+    float jumpCoolTime = 1;
 
     bool isMove = false;
     bool isJump = false;
     bool isJumpAnim = false;
-
-    [SerializeField] Ease ease;
 
     Rigidbody rb;
 
@@ -83,8 +82,16 @@ public class PlayerMove : MonoBehaviour
         ishit = Physics.CheckBox(transform.position,Vector3.one * 0.9f,Quaternion.identity,groundLayers);
 
 
-        if (ishit)
+        if (ishit == false)
+        {
             isJump = false;
+        }
+
+        // ジャンプクールタイム
+        if (jumpCoolTime > 0)
+        {
+            jumpCoolTime -= Time.deltaTime;
+        }
 
         if (player_velocity == new Vector3(0, 0, 0))
         {
@@ -129,23 +136,24 @@ public class PlayerMove : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context)
     {
 
-        isJump = true;
-
         if (context.action.name != "Jump")
             return;
 
         if (isJump)
         {
-            rb.AddForce(transform.up * jumpPower, ForceMode.Impulse);
-            playerAnimator.SetBool("Jump", true);
+            if (jumpCoolTime <= 0)
+            {
+                rb.AddForce(transform.up * jumpPower, ForceMode.Impulse);
+                isJumpAnim = true;
+                playerAnimator.SetBool("Jump", true);
+                jumpCoolTime = 1;
+            }
         }
-
-        isJumpAnim = true;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<GearRotation>(out _))
+        if (other.TryGetComponent<Item>(out _))
         {
             other.gameObject.SetActive(false);
             star.Value = true;
@@ -163,7 +171,7 @@ public class PlayerMove : MonoBehaviour
         if (ishit)
         {
             isJumpAnim = false;
-            isJump = false;
+            isJump = true;
         }
     }
 
