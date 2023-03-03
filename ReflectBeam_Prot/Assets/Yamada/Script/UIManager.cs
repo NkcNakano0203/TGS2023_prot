@@ -32,7 +32,6 @@ public class UIManager : MonoBehaviour
 
     void OnClear()
     {
-        item = this.GetComponent<Image>();
         item.sprite = Itemsprite;
 
 
