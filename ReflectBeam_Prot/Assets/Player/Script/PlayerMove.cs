@@ -201,7 +201,7 @@ public class PlayerMove : MonoBehaviour
     {
         playerAnimator.SetInteger("Action", (int)Action.Die);
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.7f);
 
         death.Value = true;
     }
