@@ -31,8 +31,8 @@ public class UIManager : MonoBehaviour
     void OnClear()
     {
         starCountText.text = $"Star:{gm.starCount}";
-        timeCountText.text = $"クリアタイム:{gm.gameTime}";
-        restartCountText.text = $"リスタート回数:{gm.restartCount}";
+        timeCountText.text = $"クリアタイム {gm.gameTime}";
+        restartCountText.text = $"リスタート回数 {gm.restartCount}";
 
         image.rectTransform.DOLocalMoveY(0f, 1f).SetLoops(1, LoopType.Restart).SetEase(ease);
     }
