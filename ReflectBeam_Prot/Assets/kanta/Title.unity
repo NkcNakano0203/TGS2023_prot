@@ -181,10 +181,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Start
+  m_text: "\u59CB\u3081\u308B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6a5ade51dfb75d34a89c3817178e96b0, type: 2}
+  m_sharedMaterial: {fileID: 4306917642574735212, guid: 6a5ade51dfb75d34a89c3817178e96b0,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -695,7 +696,7 @@ MonoBehaviour:
   - {fileID: 557552402}
   - {fileID: 1760751925}
   arrow: {fileID: 1086115009}
-  arrowXPos: -2235.6
+  arrowXPos: -450
 --- !u!1 &1086115009
 GameObject:
   m_ObjectHideFlags: 0
@@ -983,12 +984,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Exit
-
-'
+  m_text: "\u3084\u3081\u308B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6a5ade51dfb75d34a89c3817178e96b0, type: 2}
+  m_sharedMaterial: {fileID: 4306917642574735212, guid: 6a5ade51dfb75d34a89c3817178e96b0,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
