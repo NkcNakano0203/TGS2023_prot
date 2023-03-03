@@ -75,9 +75,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ab6573d5c572c43a2fe0dd4c54bac5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSetColor: 1
-  colorName: yellow
-  obj1: {fileID: 0}
+  goal: {fileID: 0}
+  switchObj:
+  - {fileID: 2745580004325635632}
+  - {fileID: 7708465677390070453}
+  - {fileID: 3759953517560878431}
+  - {fileID: 6668128646317157876}
+  intervalTime: 1
+  color: {r: 1, g: 1, b: 1, a: 0}
+  intensity: 3
 --- !u!1 &942205347227397228
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,7 +264,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 6271573414225017425, guid: e0f59a04a5a6c5147a315dacde402671, type: 3}
+  - {fileID: 2100000, guid: 207be1e787023bf46b1840b63918c834, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -424,7 +430,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 6271573414225017425, guid: e0f59a04a5a6c5147a315dacde402671, type: 3}
+  - {fileID: 2100000, guid: 207be1e787023bf46b1840b63918c834, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -507,7 +513,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 6271573414225017425, guid: e0f59a04a5a6c5147a315dacde402671, type: 3}
+  - {fileID: 2100000, guid: 207be1e787023bf46b1840b63918c834, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -590,7 +596,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 6271573414225017425, guid: e0f59a04a5a6c5147a315dacde402671, type: 3}
+  - {fileID: 2100000, guid: 207be1e787023bf46b1840b63918c834, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
