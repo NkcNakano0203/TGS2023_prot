@@ -9,6 +9,12 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     PlayerMove player;
 
+    /// <summary>
+    /// リスタート数(死亡、リスタート問わず)
+    /// </summary>
+    [SerializeField]
+    RestartCounter restartCounter;
+
     // クリアイベント
     public IReadOnlyReactiveProperty<bool> ClearProp => clear;
     private ReactiveProperty<bool> clear = new ReactiveProperty<bool>(false);
@@ -25,12 +31,6 @@ public class GameManager : MonoBehaviour
     public bool GetItem => item;
     private bool item = false;
 
-    /// <summary>
-    /// リスタート数(死亡、リスタート問わず)
-    /// </summary>
-    public int restartCount => restartCnt;
-    private int restartCnt = 0;
-
     bool pause = false;
 
     private void Start()
@@ -42,7 +42,11 @@ public class GameManager : MonoBehaviour
             clear.Value = true;
         });
         // プレイヤーのミスイベント
-        player.DeathProp.Where(x => x).Subscribe(x => SceneManager.LoadScene(SceneManager.GetActiveScene().name));
+        player.DeathProp.Where(x => x).Subscribe(x =>
+        {
+            restartCounter.Add();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        });
         // ステージ中の星獲得イベント
         player.GetStar.Where(x => x).Subscribe(x => item = true);
     }
@@ -57,9 +61,4 @@ public class GameManager : MonoBehaviour
     {
         timer = Mathf.Floor(timer);
     }
-
-    // 一時停止実装案
-    //globalなイベントを作って
-    //停止したいクラスはイベントを購読して
-    //一時停止の管理クラスがイベントを発行する
 }

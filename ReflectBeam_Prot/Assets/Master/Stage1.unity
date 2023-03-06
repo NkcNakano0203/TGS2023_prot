@@ -218,7 +218,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &632437299
 GameObject:
@@ -251,6 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1884117902}
+  restartCounter: {fileID: 11400000, guid: b38f11cf4407a8846bceab2813ebae16, type: 2}
 --- !u!4 &632437301
 Transform:
   m_ObjectHideFlags: 0
@@ -266,7 +267,7 @@ Transform:
   - {fileID: 1023799615}
   - {fileID: 1884117904}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &632437302
 MonoBehaviour:
@@ -931,7 +932,7 @@ RectTransform:
   - {fileID: 1229408051}
   - {fileID: 2130071311}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1240,7 +1241,7 @@ PrefabInstance:
     - target: {fileID: 5971848381141617464, guid: e2ce2c86a4da6a54caa3b748f95e7275,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5971848381141617464, guid: e2ce2c86a4da6a54caa3b748f95e7275,
         type: 3}
