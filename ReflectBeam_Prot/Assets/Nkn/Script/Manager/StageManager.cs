@@ -7,7 +7,7 @@ public class StageManager : MonoBehaviour
     [SerializeField]
     StageList stageList;
 
-    Stage[] stages => stageList.GetList;
+    Stage[] stages => stageList.GetArray;
 
     int currentStageNum = 0;
 

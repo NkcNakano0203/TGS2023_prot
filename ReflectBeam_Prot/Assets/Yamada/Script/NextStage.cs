@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class BackUI : MonoBehaviour,IButton
+public class NextStage : MonoBehaviour
 {
-    [SerializeField]
-    PauseMenuManager GameUIManager;
-
     Button button;
 
     private void Start()
@@ -17,6 +15,6 @@ public class BackUI : MonoBehaviour,IButton
     }
     public void Click()
     {
-        GameUIManager.ToggleActive();
+        SceneManager.LoadScene("Stage_2");
     }
 }

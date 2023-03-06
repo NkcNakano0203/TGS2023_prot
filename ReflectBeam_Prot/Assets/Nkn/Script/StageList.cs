@@ -7,5 +7,5 @@ public class StageList : ScriptableObject
     [SerializeField]
     Stage[] stageList;
 
-    public Stage[] GetList => stageList.ToArray();
+    public Stage[] GetArray => stageList.ToArray();
 }
