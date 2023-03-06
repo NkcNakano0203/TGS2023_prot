@@ -7,7 +7,7 @@ public class StartButton : MonoBehaviour,IButtonSelect
 {
     public void Select()
     {
-        SceneManager.LoadScene("MasterScene");
+        SceneManager.LoadScene("Stage1");
     }
 
     public void OnClick()

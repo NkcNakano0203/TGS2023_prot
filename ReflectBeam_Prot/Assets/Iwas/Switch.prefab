@@ -81,7 +81,7 @@ MonoBehaviour:
   - {fileID: 7708465677390070453}
   - {fileID: 3759953517560878431}
   - {fileID: 6668128646317157876}
-  intervalTime: 1
+  intervalTime: 0.3
   color: {r: 1, g: 1, b: 1, a: 0}
   intensity: 3
 --- !u!1 &942205347227397228
