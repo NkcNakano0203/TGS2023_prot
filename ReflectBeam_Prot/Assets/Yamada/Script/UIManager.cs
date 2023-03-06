@@ -14,11 +14,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI timeCountText = null;
     [SerializeField] TextMeshProUGUI restartCountText = null;
 
-    [SerializeField] Image image;
+    [SerializeField] Image backGround;
 
     [SerializeField] Ease ease;
 
-    [SerializeField] Sprite Itemsprite;
+    [SerializeField] Sprite ItemSprite;
 
     void Start()
     {
@@ -32,12 +32,14 @@ public class UIManager : MonoBehaviour
 
     void OnClear()
     {
-        item.sprite = Itemsprite;
-
+        if (gm.starCount > 0)
+        {
+            item.sprite = ItemSprite;
+        }
 
         timeCountText.text = $"クリアタイム {gm.gameTime}";
         restartCountText.text = $"リスタート回数 {gm.restartCount}";
 
-        image.rectTransform.DOLocalMoveY(0f, 1f).SetLoops(1, LoopType.Restart).SetEase(ease);
+        backGround.rectTransform.DOLocalMoveY(0f, 1f).SetLoops(1, LoopType.Restart).SetEase(ease);
     }
 }
