@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using UniRx;
 
 public class GameUIManager : MonoBehaviour
 {
@@ -10,24 +11,38 @@ public class GameUIManager : MonoBehaviour
     GameObject UIPanel;
     [SerializeField]
     PlayerInput playerInput;
+    [SerializeField]
+    EventSystem eventSystem;
+    [SerializeField]
+    Button firstButton;
 
-    private void Awake()
-    {
-        playerInput.actions["Pause"].started += OnTogglePause;
-    }
     private void Start()
     {
+        playerInput.actions["Pause"].started += OnTogglePause;
         UIPanel.gameObject.SetActive(false);
     }
 
     void OnTogglePause(InputAction.CallbackContext context)
     {
-        if (!context.ReadValueAsButton()) return;
-        UIPanel.gameObject.SetActive(!UIPanel.gameObject.activeSelf);
+        try
+        {
+            if (!context.ReadValueAsButton()) return;
+            Debug.Log($"UIPanel:{UIPanel.name}", UIPanel);
+            Debug.Log($"playerInput:{playerInput.name}");
+            ToggleActive();
+        }
+        catch
+        {
+            Debug.Log("í‚é~");
+        }
     }
 
     public void ToggleActive()
     {
         UIPanel.gameObject.SetActive(!UIPanel.gameObject.activeSelf);
+        if (UIPanel.gameObject.activeSelf)
+        {
+            eventSystem.firstSelectedGameObject = firstButton.gameObject;
+        }
     }
 }
