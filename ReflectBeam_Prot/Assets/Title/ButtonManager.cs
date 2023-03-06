@@ -19,31 +19,43 @@ public class ButtonManager : MonoBehaviour
     {
 
         // デリゲート登録
-        playerInput.onActionTriggered += Arrow;
+        playerInput.onActionTriggered += RightStickArrow;
+        playerInput.actions["Navigate"].performed += D_PadArrow;
     }
 
-    void Arrow(InputAction.CallbackContext context)
-    {
-        
-        // スティック入力以外か選択変更フラグがfalseの時早期リターン
-        //if (context.action.name != "RightStick" ) { return; }
-
+    void RightStickArrow(InputAction.CallbackContext context)
+    {        
         
         Vector2 rightStickValue = context.ReadValue<Vector2>();
+        
 
         if (rightStickValue.y > 0.5f)
         {
             if (selectnum > 0)
                 selectnum--;
         }
-        if (rightStickValue.y < -0.5f)
+        if (rightStickValue.y < -0.5)
         {
             if (selectnum < button.Length - 1)
                 selectnum++;
         }
+    }
+    void D_PadArrow(InputAction.CallbackContext context)
+    {
+
+        Vector2 rightStickValue = context.ReadValue<Vector2>();
 
 
-
+        if (rightStickValue.y > 0.5f)
+        {
+            if (selectnum > 0)
+                selectnum--;
+        }
+        if (rightStickValue.y < -0.5)
+        {
+            if (selectnum < button.Length - 1)
+                selectnum++;
+        }
     }
     void Update()
     {
