@@ -32,7 +32,7 @@ public class UIManager : MonoBehaviour
 
     void OnClear()
     {
-        if (gm.starCount > 0)
+        if (gm.GetItem)
         {
             item.sprite = ItemSprite;
         }

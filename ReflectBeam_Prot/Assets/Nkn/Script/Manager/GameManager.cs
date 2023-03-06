@@ -22,8 +22,8 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// 星獲得数
     /// </summary>
-    public int starCount => star;
-    private int star = 0;
+    public bool GetItem => item;
+    private bool item = false;
 
     /// <summary>
     /// リスタート数(死亡、リスタート問わず)
@@ -38,13 +38,13 @@ public class GameManager : MonoBehaviour
         // ステージクリアイベント
         player.GetGoal.Where(x => x).Subscribe(x =>
         {
-            ClearTime(); 
+            ClearTime();
             clear.Value = true;
         });
         // プレイヤーのミスイベント
         player.DeathProp.Where(x => x).Subscribe(x => SceneManager.LoadScene(SceneManager.GetActiveScene().name));
         // ステージ中の星獲得イベント
-        player.GetStar.Where(x => x).Subscribe(x => star++);
+        player.GetStar.Where(x => x).Subscribe(x => item = true);
     }
 
     void Update()
