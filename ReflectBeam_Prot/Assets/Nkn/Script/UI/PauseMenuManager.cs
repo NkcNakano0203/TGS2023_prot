@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class GameUIManager : MonoBehaviour
+public class PauseMenuManager : MonoBehaviour
 {
     [SerializeField]
     GameObject UIPanel;
@@ -27,8 +27,8 @@ public class GameUIManager : MonoBehaviour
         try
         {
             if (!context.ReadValueAsButton()) return;
-            Debug.Log($"UIPanel:{UIPanel.name}", UIPanel);
-            Debug.Log($"playerInput:{playerInput.name}");
+            //Debug.Log($"UIPanel:{UIPanel.name}", UIPanel);
+            //Debug.Log($"playerInput:{playerInput.name}");
             ToggleActive();
         }
         catch
