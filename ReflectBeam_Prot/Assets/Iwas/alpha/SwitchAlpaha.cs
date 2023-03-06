@@ -35,7 +35,7 @@ public class SwitchAlpaha : MonoBehaviour, IRayReceiverAlpha
         foreach (var item in switchObj)
         {
             MeshRenderer meshRenderer = item.GetComponent<MeshRenderer>();
-            meshRenderer.material.EnableKeyword("_EMISSION");
+            meshRenderer.material.DisableKeyword("_EMISSION");
             meshRenderer.material.SetColor("_EmissionColor", color);
             
         }
