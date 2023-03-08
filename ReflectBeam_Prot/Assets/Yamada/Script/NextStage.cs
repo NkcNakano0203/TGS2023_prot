@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class NextStage : MonoBehaviour
 {
+    [SerializeField]
+    RestartCounter restartCounter;
     Button button;
 
     private void Start()
@@ -15,6 +17,7 @@ public class NextStage : MonoBehaviour
     }
     public void Click()
     {
+        restartCounter.Reset();
         SceneManager.LoadScene("Stage_2");
     }
 }

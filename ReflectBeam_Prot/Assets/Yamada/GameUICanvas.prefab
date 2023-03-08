@@ -552,6 +552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
+  restartCounter: {fileID: 0}
   item: {fileID: 6408627934795955525}
   timeCountText: {fileID: 6690147313268669709}
   restartCountText: {fileID: 6690147313030816640}
@@ -850,6 +851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d0d0f2362f48e48ba08788f3c41e68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  restartCounter: {fileID: 11400000, guid: b38f11cf4407a8846bceab2813ebae16, type: 2}
 --- !u!1 &6690147314506342059
 GameObject:
   m_ObjectHideFlags: 0
