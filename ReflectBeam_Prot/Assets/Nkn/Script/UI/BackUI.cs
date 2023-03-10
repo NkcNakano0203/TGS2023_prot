@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BackUI : MonoBehaviour,IButton
 {
     [SerializeField]
-    GameUIManager GameUIManager;
+    PauseMenuManager GameUIManager;
 
     Button button;
 

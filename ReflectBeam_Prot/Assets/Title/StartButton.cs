@@ -5,9 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class StartButton : MonoBehaviour,IButtonSelect
 {
+    [SerializeField]
+    RestartCounter restartCounter;
+
     public void Select()
     {
-        SceneManager.LoadScene("MasterScene");
+        restartCounter.Reset();
+        SceneManager.LoadScene("Stage1");
     }
 
     public void OnClick()

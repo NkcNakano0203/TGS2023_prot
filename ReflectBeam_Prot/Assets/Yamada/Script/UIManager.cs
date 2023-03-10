@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] GameManager gm;
+    [SerializeField] RestartCounter restartCounter;
 
     [SerializeField] Image item = null;
     [SerializeField] TextMeshProUGUI timeCountText = null;
@@ -38,8 +39,8 @@ public class UIManager : MonoBehaviour
         }
 
         timeCountText.text = $"クリアタイム {gm.gameTime}";
-        restartCountText.text = $"リスタート回数 {gm.restartCount}";
+        restartCountText.text = $"リスタート回数 {restartCounter.GetCount}";
 
-        backGround.rectTransform.DOLocalMoveY(150f, 1f).SetLoops(1, LoopType.Restart).SetEase(ease);
+        backGround.rectTransform.DOLocalMoveY(120f, 1f).SetLoops(1, LoopType.Restart).SetEase(ease);
     }
 }

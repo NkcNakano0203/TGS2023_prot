@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class NextStage : MonoBehaviour
+public class NextStage : MonoBehaviour,IButton
 {
+    [SerializeField]
+    RestartCounter restartCounter;
     Button button;
 
     private void Start()
@@ -15,6 +17,7 @@ public class NextStage : MonoBehaviour
     }
     public void Click()
     {
-        SceneManager.LoadScene("Stage_2");
+        restartCounter.Reset();
+        SceneManager.LoadScene("Stage2");
     }
 }
