@@ -15,6 +15,7 @@ public class BeamEffect : MonoBehaviour
     GameObject lastHitReflector;
     GameObject lastHit;
 
+    bool istest = true;
     private void Update()
     {
     }
@@ -39,41 +40,37 @@ public class BeamEffect : MonoBehaviour
 
 
 
-        if(!rayHit)
+        if (!rayHit)
         {
             rayObj.SetActive(false);
             return;
         }
         rayObj.SetActive(true);
 
-        if(hit.collider.gameObject.TryGetComponent(out IRayRecevier2 rayRecevier))
+        if (hit.collider.gameObject.TryGetComponent(out IRayRecevier2 rayRecevier))
         {
             lastHitReflector = hit.collider.gameObject;
-            rayRecevier.RayEnter(hit.point,direction);
+            rayRecevier.RayEnter(hit.point, direction);
+            istest = true;
         }
         else
         {
             if (lastHitReflector == null)
                 return;
-            // if (lastHitReflector != lastHit)
+            if (istest)
             {
-                lastHitReflector.TryGetComponent(out IRayRecevier2 lastHit) ;
+                istest = false;
+                lastHitReflector.TryGetComponent(out IRayRecevier2 lastHit);
                 lastHit.RayExit();
 
             }
         }
-        if(hit.collider.gameObject.TryGetComponent(out PlayerMove playerMove))
+        if (hit.collider.gameObject.TryGetComponent(out PlayerMove playerMove))
         {
             playerMove.PlayerDeath();
         }
-
-
         if (hit.point == lastHitPoint)
             return;
-
-        
-
-
         lastHitPoint = hit.point;
         lastHit = hit.collider.gameObject;
     }
@@ -83,11 +80,11 @@ public class BeamEffect : MonoBehaviour
         rayObj.SetActive(false);
         if (lastHitReflector == null)
             return;
-       // if (lastHitReflector != lastHit)
+        if (istest&& lastHit)
         {
+            istest = false;
             lastHitReflector.TryGetComponent(out IRayRecevier2 rayRecevier);
             rayRecevier.RayExit();
-
         }
     }
 
