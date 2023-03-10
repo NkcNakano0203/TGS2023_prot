@@ -55,9 +55,7 @@ public class BeamEffect : MonoBehaviour
         }
         else
         {
-            if (lastHitReflector == null)
-                return;
-            if (isRemove)
+            if (isRemove&& lastHitReflector != null)
             {
                 isRemove = false;
                 lastHitReflector.TryGetComponent(out IRayRecevier2 lastHit);
