@@ -38,9 +38,13 @@ public class ButtonManager : MonoBehaviour
             if (selectnum < button.Length - 1)
                 selectnum++;
         }
-        Vector3 arrowpos= button[selectnum].transform.position;
+    }
+
+    private void Update()
+    {
+        Vector3 arrowpos = button[selectnum].transform.position;
         arrowpos.x += arrowXPos;
         arrow.transform.position = arrowpos;
     }
- 
+
 }
