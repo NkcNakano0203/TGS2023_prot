@@ -40,9 +40,6 @@ public class PauseMenuManager : MonoBehaviour
     public void ToggleActive()
     {
         UIPanel.gameObject.SetActive(!UIPanel.gameObject.activeSelf);
-        if (UIPanel.gameObject.activeSelf)
-        {
-            eventSystem.firstSelectedGameObject = firstButton.gameObject;
-        }
+        eventSystem.SetSelectedGameObject(UIPanel.gameObject.activeSelf ? firstButton.gameObject : null);
     }
 }
