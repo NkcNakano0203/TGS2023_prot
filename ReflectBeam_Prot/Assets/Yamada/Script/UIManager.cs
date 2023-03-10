@@ -5,6 +5,7 @@ using TMPro;
 using UniRx;
 using DG.Tweening;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,14 +13,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] RestartCounter restartCounter;
 
     [SerializeField] Image item = null;
+    [SerializeField] Image backGround;
     [SerializeField] TextMeshProUGUI timeCountText = null;
     [SerializeField] TextMeshProUGUI restartCountText = null;
 
-    [SerializeField] Image backGround;
-
     [SerializeField] Ease ease;
-
     [SerializeField] Sprite ItemSprite;
+    [SerializeField] EventSystem eventSystem;
+    [SerializeField] Button firstButton;
 
     void Start()
     {
@@ -38,8 +39,10 @@ public class UIManager : MonoBehaviour
             item.sprite = ItemSprite;
         }
 
-        timeCountText.text = $"クリアタイム {gm.gameTime}";
-        restartCountText.text = $"リスタート回数 {restartCounter.GetCount}";
+        eventSystem.SetSelectedGameObject(firstButton.gameObject);
+
+        timeCountText.text = $"クリアタイム {gm.gameTime} 秒";
+        restartCountText.text = $"リスタート回数 {restartCounter.GetCount} 回";
 
         backGround.rectTransform.DOLocalMoveY(120f, 1f).SetLoops(1, LoopType.Restart).SetEase(ease);
     }
