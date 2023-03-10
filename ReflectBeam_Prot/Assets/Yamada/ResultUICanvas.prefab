@@ -589,7 +589,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 4833190919679740863}
   m_OnClick:
     m_PersistentCalls:
@@ -718,6 +718,7 @@ MonoBehaviour:
   ItemSprite: {fileID: 21300000, guid: 1a005d22bbd83384ea68bdbadb5245bd, type: 3}
   eventSystem: {fileID: 0}
   firstButton: {fileID: 4833190919679740862}
+  nextButton: {fileID: 4833190919765377542}
 --- !u!1 &4833190919765377539
 GameObject:
   m_ObjectHideFlags: 0
@@ -849,7 +850,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 4833190919765377543}
   m_OnClick:
     m_PersistentCalls:

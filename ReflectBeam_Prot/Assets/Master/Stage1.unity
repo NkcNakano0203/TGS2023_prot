@@ -125,6 +125,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &446862690 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5212412829271589975, guid: 660e50ade81d6b04bb3aa1f4f46411d1,
+    type: 3}
+  m_PrefabInstance: {fileID: 573273663}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &543149744
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,6 +356,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0109417d3fe2f844aa00b0c7364a6d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &844905082 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6376201303710755683, guid: 660e50ade81d6b04bb3aa1f4f46411d1,
+    type: 3}
+  m_PrefabInstance: {fileID: 573273663}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &909534237
 GameObject:
   m_ObjectHideFlags: 0
@@ -849,6 +861,12 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1771456627 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5980906003902216491, guid: 660e50ade81d6b04bb3aa1f4f46411d1,
+    type: 3}
+  m_PrefabInstance: {fileID: 573273663}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1792204222
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -994,22 +1012,22 @@ PrefabInstance:
         type: 3}
       propertyPath: gimmickList.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1771456627}
     - target: {fileID: 6419231200458613089, guid: 7c0892ab4b913d143a3f2e65e9b22ad1,
         type: 3}
       propertyPath: gimmickList.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1990061928}
     - target: {fileID: 6419231200458613089, guid: 7c0892ab4b913d143a3f2e65e9b22ad1,
         type: 3}
       propertyPath: gimmickList.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 844905082}
     - target: {fileID: 6419231200458613089, guid: 7c0892ab4b913d143a3f2e65e9b22ad1,
         type: 3}
       propertyPath: gimmickList.Array.data[3]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 446862690}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c0892ab4b913d143a3f2e65e9b22ad1, type: 3}
 --- !u!114 &1884117902 stripped
@@ -1041,6 +1059,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3683013708575923212, guid: 7c0892ab4b913d143a3f2e65e9b22ad1,
     type: 3}
   m_PrefabInstance: {fileID: 1884117901}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1990061928 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4694372681622704869, guid: 660e50ade81d6b04bb3aa1f4f46411d1,
+    type: 3}
+  m_PrefabInstance: {fileID: 573273663}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2130071310
 PrefabInstance:

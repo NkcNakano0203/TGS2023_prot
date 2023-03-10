@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Sprite ItemSprite;
     [SerializeField] EventSystem eventSystem;
     [SerializeField] Button firstButton;
+    [SerializeField] Button nextButton;
 
     void Start()
     {
@@ -39,10 +40,19 @@ public class UIManager : MonoBehaviour
             item.sprite = ItemSprite;
         }
 
+        if (firstButton.gameObject != null)
+        {
+            firstButton.interactable = true;
+        }
+        if (nextButton.gameObject != null)
+        {
+            nextButton.interactable = true;
+        }
+
         eventSystem.SetSelectedGameObject(firstButton.gameObject);
 
-        timeCountText.text = $"クリアタイム {gm.gameTime} 秒";
-        restartCountText.text = $"リスタート回数 {restartCounter.GetCount} 回";
+        timeCountText.text = $"クリアタイム {gm.gameTime}秒";
+        restartCountText.text = $"リスタート回数 {restartCounter.GetCount}回";
 
         backGround.rectTransform.DOLocalMoveY(120f, 1f).SetLoops(1, LoopType.Restart).SetEase(ease);
     }
