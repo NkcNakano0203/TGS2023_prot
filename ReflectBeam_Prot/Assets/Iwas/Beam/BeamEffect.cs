@@ -15,7 +15,7 @@ public class BeamEffect : MonoBehaviour
     GameObject lastHitReflector;
     GameObject lastHit;
 
-    bool istest = true;
+    bool isRemove = true;
     private void Update()
     {
     }
@@ -51,15 +51,15 @@ public class BeamEffect : MonoBehaviour
         {
             lastHitReflector = hit.collider.gameObject;
             rayRecevier.RayEnter(hit.point, direction);
-            istest = true;
+            isRemove = true;
         }
         else
         {
             if (lastHitReflector == null)
                 return;
-            if (istest)
+            if (isRemove)
             {
-                istest = false;
+                isRemove = false;
                 lastHitReflector.TryGetComponent(out IRayRecevier2 lastHit);
                 lastHit.RayExit();
 
@@ -80,9 +80,9 @@ public class BeamEffect : MonoBehaviour
         rayObj.SetActive(false);
         if (lastHitReflector == null)
             return;
-        if (istest&& lastHit)
+        if (isRemove)
         {
-            istest = false;
+            isRemove = false;
             lastHitReflector.TryGetComponent(out IRayRecevier2 rayRecevier);
             rayRecevier.RayExit();
         }

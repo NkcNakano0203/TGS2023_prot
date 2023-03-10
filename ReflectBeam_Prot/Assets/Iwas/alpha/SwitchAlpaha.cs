@@ -27,7 +27,7 @@ public class SwitchAlpaha : MonoBehaviour, IRayReceiverAlpha,IRayRecevier2
 
     public void RayEnter(Laser laser)
     {
-        
+        CountUp(Color.red);
     }
 
     public void RayEnter(Vector3 hitpos, Vector3 rayVec)
