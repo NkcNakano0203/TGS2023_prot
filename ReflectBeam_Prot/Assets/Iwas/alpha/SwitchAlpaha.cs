@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SwitchAlpaha : MonoBehaviour, IRayReceiverAlpha
+public class SwitchAlpaha : MonoBehaviour, IRayReceiverAlpha,IRayRecevier2
 {
     [SerializeField]
     Goal goal;
@@ -27,6 +27,11 @@ public class SwitchAlpaha : MonoBehaviour, IRayReceiverAlpha
 
     public void RayEnter(Laser laser)
     {
+        
+    }
+
+    public void RayEnter(Vector3 hitpos, Vector3 rayVec)
+    {
         CountUp(Color.red);
     }
 
@@ -42,6 +47,25 @@ public class SwitchAlpaha : MonoBehaviour, IRayReceiverAlpha
         countDownTime = 0;
         countDown = 0;
         goal.Close();
+    }
+
+    public void RayExit()
+    {
+        foreach (var item in switchObj)
+        {
+            MeshRenderer meshRenderer = item.GetComponent<MeshRenderer>();
+            meshRenderer.material.DisableKeyword("_EMISSION");
+            meshRenderer.material.SetColor("_EmissionColor", color);
+
+        }
+        countDownTime = 0;
+        countDown = 0;
+        goal.Close();
+    }
+
+    public void RayStay(Laser laser)
+    {
+        CountUp(Color.red);
     }
 
     private void CountUp(Color color)
@@ -73,10 +97,6 @@ public class SwitchAlpaha : MonoBehaviour, IRayReceiverAlpha
             ObjectEmission(switchObj[0], color);
         }
     }
-
-
-
-
     private void ObjectEmission(GameObject obj, Color color)
     {
         MeshRenderer meshRenderer = obj.GetComponent<MeshRenderer>();

@@ -17,14 +17,6 @@ public class BeamEffect : MonoBehaviour
 
     private void Update()
     {
-        if (lastHitReflector == null)
-            return;
-        if(lastHitReflector != lastHit)
-        {
-            lastHitReflector.TryGetComponent(out IRayRecevier2 rayRecevier);
-            rayRecevier.RayExit();
-
-        }
     }
 
     public void Ray(Vector3 startPos, Vector3 direction)
@@ -58,7 +50,18 @@ public class BeamEffect : MonoBehaviour
         {
             lastHitReflector = hit.collider.gameObject;
             rayRecevier.RayEnter(hit.point,direction);
-        }    
+        }
+        else
+        {
+            if (lastHitReflector == null)
+                return;
+            // if (lastHitReflector != lastHit)
+            {
+                lastHitReflector.TryGetComponent(out IRayRecevier2 lastHit) ;
+                lastHit.RayExit();
+
+            }
+        }
         if(hit.collider.gameObject.TryGetComponent(out PlayerMove playerMove))
         {
             playerMove.PlayerDeath();
@@ -78,6 +81,14 @@ public class BeamEffect : MonoBehaviour
     public void RayExit()
     {
         rayObj.SetActive(false);
+        if (lastHitReflector == null)
+            return;
+       // if (lastHitReflector != lastHit)
+        {
+            lastHitReflector.TryGetComponent(out IRayRecevier2 rayRecevier);
+            rayRecevier.RayExit();
+
+        }
     }
 
 }
