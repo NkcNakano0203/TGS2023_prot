@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18153991, g: 0.22718132, b: 0.3074045, a: 1}
+  m_IndirectSpecularColor: {r: 0.18154046, g: 0.22718185, b: 0.3074057, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -124,6 +124,71 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &121689606
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 121689607}
+  - component: {fileID: 121689608}
+  m_Layer: 0
+  m_Name: TitleBGM(CriAtomSource)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &121689607
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121689606}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1998684746}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &121689608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121689606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1e631c3b9947b54c823c6853a05529c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playOnStart: 1
+  _regionOnStart: {fileID: 0}
+  _listenerOnStart: {fileID: 0}
+  _use3dPositioning: 0
+  _freezeOrientation: 0
+  _loop: 1
+  _volume: 1
+  _pitch: 0
+  _androidUseLowLatencyVoicePool: 0
+  need_to_player_update_all: 1
+  _use3dRandomization: 0
+  _randomPositionListMaxLength: 0
+  randomize3dConfig:
+    followsOriginalSource: 0
+    calculationType: 0
+    calculationParameters:
+    - 0
+    - 0
+    - 0
+  _cueName: TitleBGM
+  _cueSheet: BGM
 --- !u!1 &136834046
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,6 +498,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 292905868}
   m_CullTransparentMesh: 1
+--- !u!1 &322040904
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 322040905}
+  - component: {fileID: 322040906}
+  m_Layer: 0
+  m_Name: CRIWARE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &322040905
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322040904}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1998684746}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &322040906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322040904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91f529aa944b914449d62b8c40f188fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  acfFile: ReflectBeam.acf
+  cueSheets:
+  - name: BGM
+    acbFile: BGM.acb
+    awbFile: 
+    loaderStatus: 0
+  dspBusSetting: 
+  dontDestroyOnLoad: 0
+  dontRemoveExistsCueSheet: 0
 --- !u!1001 &323797633
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -759,6 +877,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartCounter: {fileID: 11400000, guid: b38f11cf4407a8846bceab2813ebae16, type: 2}
+--- !u!1 &597358562
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 597358563}
+  - component: {fileID: 597358564}
+  m_Layer: 0
+  m_Name: CriWareErrorHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &597358563
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597358562}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1998684746}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &597358564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597358562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f154ff0ac54c142928b46e94a4ee0790, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableDebugPrintOnTerminal: 0
+  enableForceCrashOnError: 0
+  dontDestroyOnLoad: 0
+  messageBufferCounts: 8
 --- !u!1 &671055059
 GameObject:
   m_ObjectHideFlags: 0
@@ -1271,6 +1437,117 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1490164242
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1490164243}
+  - component: {fileID: 1490164244}
+  m_Layer: 0
+  m_Name: CriWareLibraryInitializer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1490164243
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490164242}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1998684746}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1490164244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490164242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e49f339aff054453b2d8287aec75bf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initializesFileSystem: 1
+  fileSystemConfig:
+    numberOfLoaders: 16
+    numberOfBinders: 8
+    numberOfInstallers: 2
+    installBufferSize: 32
+    maxPath: 256
+    userAgentString: 
+    minimizeFileDescriptorUsage: 0
+    enableCrcCheck: 0
+    androidDeviceReadBitrate: 50000000
+  initializesAtom: 1
+  atomConfig:
+    acfFileName: 
+    maxVirtualVoices: 32
+    maxVoiceLimitGroups: 32
+    maxCategories: 32
+    maxAisacs: 8
+    maxBusSends: 8
+    maxSequenceEventsPerFrame: 2
+    maxBeatSyncCallbacksPerFrame: 1
+    maxCueLinkCallbacksPerFrame: 1
+    standardVoicePoolConfig:
+      memoryVoices: 16
+      streamingVoices: 8
+    hcaMxVoicePoolConfig:
+      memoryVoices: 0
+      streamingVoices: 0
+    outputSamplingRate: 0
+    usesInGamePreview: 0
+    inGamePreviewMode: 0
+    inGamePreviewConfig:
+      maxPreviewObjects: 200
+      communicationBufferSize: 2048
+      playbackPositionUpdateInterval: 8
+    serverFrequency: 60
+    asrOutputChannels: 0
+    useRandomSeedWithTime: 1
+    categoriesPerPlayback: 4
+    maxFaders: 4
+    maxBuses: 8
+    maxParameterBlocks: 1024
+    vrMode: 0
+    keepPlayingSoundOnPause: 1
+    editorPcmOutputConfig:
+      enable: 0
+      bufferLength: 4096
+    pcBufferingTime: 0
+    iosEnableSonicSync: 1
+    iosBufferingTime: 50
+    iosOverrideIPodMusic: 0
+    androidEnableSonicSync: 1
+    androidBufferingTime: 133
+    androidStartBufferingTime: 100
+    androidLowLatencyStandardVoicePoolConfig:
+      memoryVoices: 0
+      streamingVoices: 0
+    androidUsesAndroidFastMixer: 1
+    androidForceToUseAsrForDefaultPlayback: 1
+    androidUsesAAudio: 0
+    androidStreamType: 0
+  initializesMana: 1
+  manaConfig:
+    numberOfDecoders: 8
+    numberOfMaxEntries: 4
+  dontInitializeOnAwake: 0
+  dontDestroyOnLoad: 0
 --- !u!1 &1490516920
 GameObject:
   m_ObjectHideFlags: 0
@@ -2202,6 +2479,41 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1998684745
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1998684746}
+  m_Layer: 0
+  m_Name: Sound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1998684746
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998684745}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1490164243}
+  - {fileID: 597358563}
+  - {fileID: 322040905}
+  - {fileID: 121689607}
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2001665812 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 131179522020801710, guid: 218f8d2f2b2b639429797894cf7cbf9f,

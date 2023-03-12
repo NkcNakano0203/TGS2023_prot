@@ -125,59 +125,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &122174589
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 122174590}
-  - component: {fileID: 122174591}
-  m_Layer: 0
-  m_Name: CRIWARE
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &122174590
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 122174589}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1586865567}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &122174591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 122174589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91f529aa944b914449d62b8c40f188fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  acfFile: Beam.acf
-  cueSheets:
-  - name: BGM
-    acbFile: BGM.acb
-    awbFile: 
-    loaderStatus: 0
-  dspBusSetting: 
-  dontDestroyOnLoad: 0
-  dontRemoveExistsCueSheet: 0
 --- !u!1 &237269192
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,6 +242,71 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 573273663}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &452382005
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 452382006}
+  - component: {fileID: 452382007}
+  m_Layer: 0
+  m_Name: Stage1BGM(CriAtomSource)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &452382006
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452382005}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1586865567}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &452382007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452382005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1e631c3b9947b54c823c6853a05529c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playOnStart: 1
+  _regionOnStart: {fileID: 0}
+  _listenerOnStart: {fileID: 0}
+  _use3dPositioning: 0
+  _freezeOrientation: 0
+  _loop: 1
+  _volume: 1
+  _pitch: 0
+  _androidUseLowLatencyVoicePool: 0
+  need_to_player_update_all: 1
+  _use3dRandomization: 0
+  _randomPositionListMaxLength: 0
+  randomize3dConfig:
+    followsOriginalSource: 0
+    calculationType: 0
+    calculationParameters:
+    - 0
+    - 0
+    - 0
+  _cueName: Stage1BGM
+  _cueSheet: BGM
 --- !u!1 &543149744
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,6 +532,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0109417d3fe2f844aa00b0c7364a6d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &694503751
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 694503752}
+  - component: {fileID: 694503753}
+  m_Layer: 0
+  m_Name: CRIWARE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &694503752
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694503751}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1586865567}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &694503753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694503751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91f529aa944b914449d62b8c40f188fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  acfFile: ReflectBeam.acf
+  cueSheets:
+  - name: BGM
+    acbFile: BGM.acb
+    awbFile: 
+    loaderStatus: 0
+  dspBusSetting: 
+  dontDestroyOnLoad: 0
+  dontRemoveExistsCueSheet: 0
 --- !u!1 &844905082 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6376201303710755683, guid: 660e50ade81d6b04bb3aa1f4f46411d1,
@@ -1055,8 +1120,8 @@ Transform:
   m_Children:
   - {fileID: 237269193}
   - {fileID: 2104398767}
-  - {fileID: 122174590}
-  - {fileID: 1960274556}
+  - {fileID: 694503752}
+  - {fileID: 452382006}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1259,71 +1324,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1884117901}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1960274555
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1960274556}
-  - component: {fileID: 1960274557}
-  m_Layer: 0
-  m_Name: StageBGM(CriAtomSource)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1960274556
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1960274555}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1586865567}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1960274557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1960274555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1e631c3b9947b54c823c6853a05529c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playOnStart: 1
-  _regionOnStart: {fileID: 0}
-  _listenerOnStart: {fileID: 0}
-  _use3dPositioning: 0
-  _freezeOrientation: 0
-  _loop: 1
-  _volume: 1
-  _pitch: 0
-  _androidUseLowLatencyVoicePool: 0
-  need_to_player_update_all: 1
-  _use3dRandomization: 0
-  _randomPositionListMaxLength: 0
-  randomize3dConfig:
-    followsOriginalSource: 0
-    calculationType: 0
-    calculationParameters:
-    - 0
-    - 0
-    - 0
-  _cueName: StageBGM
-  _cueSheet: BGM
 --- !u!1 &1990061928 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4694372681622704869, guid: 660e50ade81d6b04bb3aa1f4f46411d1,
