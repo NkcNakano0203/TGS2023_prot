@@ -17,17 +17,12 @@ public class ButtonManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         // ÉfÉäÉQÅ[Égìoò^        
         playerInput.actions["Navigate"].performed += RightStickArrow;
     }
-
     void RightStickArrow(InputAction.CallbackContext context)
     {
-        
         Vector2 rightStickValue = context.ReadValue<Vector2>();
-        
-
         if (rightStickValue.y > 0.5f)
         {
             if (selectnum > 0)
@@ -46,5 +41,4 @@ public class ButtonManager : MonoBehaviour
         arrowpos.x += arrowXPos;
         arrow.transform.position = arrowpos;
     }
-
 }
