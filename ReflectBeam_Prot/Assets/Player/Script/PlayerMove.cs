@@ -68,6 +68,14 @@ public class PlayerMove : MonoBehaviour
         isDeath = false;
     }
 
+    private void OnDestroy()
+    {
+        PlayerInput playerInput = GetComponent<PlayerInput>();
+        playerInput.actions["Move"].performed -= OnMove;
+        playerInput.actions["Move"].canceled -= OnMove;
+        playerInput.actions["Jump"].performed -= OnJump;
+    }
+
     void Update()
     {
         if (pause) return;
