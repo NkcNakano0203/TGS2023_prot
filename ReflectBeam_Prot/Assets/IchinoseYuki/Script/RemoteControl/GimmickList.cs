@@ -5,7 +5,6 @@ using System.Linq;
 /// <summary>
 /// ギミックをまとめるスクリプト
 /// </summary>
-[RequireComponent(typeof(RB_LB_GimmickSelect))]
 [RequireComponent(typeof(RightStick_GimmickSelection))]
 public class GimmickList : MonoBehaviour
 {

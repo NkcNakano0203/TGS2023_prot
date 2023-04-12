@@ -11,7 +11,6 @@ using Cysharp.Threading.Tasks;
 /// </summary>
 [RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(GimmickList))]
-[RequireComponent(typeof(RB_LB_GimmickSelect))]
 public class RightStick_GimmickSelection : MonoBehaviour
 {
     // ギミックを保管する配列
