@@ -6,10 +6,9 @@ using UnityEngine;
 /// </summary>
 public class SwitchButtonMove : MonoBehaviour
 {
+    private Vector3 parentPos;
     [SerializeField]
-    private float minZ = 0.35f;
-    [SerializeField]
-    private float maxZ = 0.5f;
+    private float minY = 0.35f;
     [SerializeField]
     private float moveSpeed = 0.05f;
     [SerializeField]
@@ -17,23 +16,23 @@ public class SwitchButtonMove : MonoBehaviour
 
     private void Start()
     {
-        
+        parentPos = transform.parent.position;
     }
 
     private void Update()
     {
-        if(active && transform.position.z < minZ)
+        if (active && transform.position.y > parentPos.y - minY)
         {
-            transform.position += Vector3.forward * moveSpeed * Time.deltaTime;
+            transform.position -= Vector3.up * moveSpeed * Time.deltaTime;
         }
         else
         {
             active = false;
         }
 
-        if (!active && transform.position.z < maxZ)
+        if (!active && transform.position.y < parentPos.y)
         {
-            transform.position -= Vector3.forward * moveSpeed * Time.deltaTime;
+            transform.position += Vector3.up * moveSpeed * Time.deltaTime;
         }
     }
 }
