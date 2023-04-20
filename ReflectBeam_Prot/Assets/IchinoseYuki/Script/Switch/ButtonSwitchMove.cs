@@ -21,10 +21,17 @@ namespace ButtonSwitch
         [SerializeField]
         private bool active = false;
         private bool isDown;
+        private bool onStay;
+
+        [SerializeField,Header("ここに対応するギミックを入れてください")]
+        private GameObject SupportedGimmick;
+
+        FixedRotation_2 FR;
 
         private void Start()
         {
             parentPos = transform.parent.position;
+            FR = SupportedGimmick.GetComponent<FixedRotation_2>();
         }
 
         private void Update()
@@ -44,7 +51,7 @@ namespace ButtonSwitch
                     DownMove();
                     break;
             }
-
+            Return();
         }
 
         private void RightMove()
@@ -107,15 +114,21 @@ namespace ButtonSwitch
             {
                 transform.position -= Vector3.up * moveSpeed * Time.deltaTime;
             }
-
-            if (!active && transform.position.y < parentPos.y)
+            else
             {
-                transform.position += Vector3.up * moveSpeed * Time.deltaTime;
+                active = false;
             }
-
             if(transform.position.y < parentPos.y - minPos.y)
             {
                 isDown = true;
+            }
+        }
+
+        private void Return()
+        {
+            if (!active && transform.position.y < parentPos.y)
+            {
+                transform.position += Vector3.up * moveSpeed * Time.deltaTime;
             }
         }
 
@@ -124,6 +137,15 @@ namespace ButtonSwitch
             if (col.gameObject.CompareTag("Player"))
             {
                 active = true;
+                FR.RightRotate();
+            }
+        }
+
+        private void OnCollisionStay(Collision col)
+        {
+            if (col.gameObject.CompareTag("Player"))
+            {
+                onStay = true;
             }
         }
 
@@ -133,6 +155,7 @@ namespace ButtonSwitch
             {
                 isDown = false;
                 active = false;
+                onStay = false;
             }
         }
     }
